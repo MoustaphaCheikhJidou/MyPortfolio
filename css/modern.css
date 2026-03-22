@@ -1,7 +1,6 @@
 /* ================================================================
    MODERN.CSS — El Moustapha Portfolio Design System
-   UI Style: Data-Driven Dark / Glassmorphism / Tech Premium
-   Generated with UI UX Pro Max Design Intelligence
+   UI Style: AI-Native · Exaggerated Minimalism · Tech Premium
    Color Palette: Deep Space + Indigo + Cyan
    Typography: Space Grotesk (heading) + Inter (body)
    ================================================================ */
@@ -25,6 +24,7 @@
   --cyan-light:    #67e8f9;
   --cyan-glow:     rgba(6,182,212,0.2);
   --green:         #10b981;
+  --violet:        #7c3aed;
 
   --text:       #e2e8f0;
   --text-muted: #94a3b8;
@@ -165,7 +165,7 @@ section { padding: 80px 0 !important; border: none !important; }
 }
 .hero-orb-1 { width: 700px; height: 700px; background: var(--primary); top: -250px; right: -150px; animation-delay: 0s; }
 .hero-orb-2 { width: 450px; height: 450px; background: var(--cyan); bottom: -150px; left: -100px; animation-delay: -5s; }
-.hero-orb-3 { width: 350px; height: 350px; background: #7c3aed; top: 40%; left: 35%; animation-delay: -2.5s; }
+.hero-orb-3 { width: 350px; height: 350px; background: var(--violet); top: 40%; left: 35%; animation-delay: -2.5s; }
 
 @keyframes floatOrb {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -173,15 +173,16 @@ section { padding: 80px 0 !important; border: none !important; }
   66%  { transform: translate(-25px, 25px) scale(0.94); }
 }
 
-/* Grid background lines */
-.hero-section::before {
+/* Global geometric grid — AI-Native UI signature */
+body::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(79,70,229,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79,70,229,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(79,70,229,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -264,7 +265,7 @@ section { padding: 80px 0 !important; border: none !important; }
 
 .btn-gradient:hover {
   transform: translateY(-3px) !important;
-  box-shadow: 0 10px 36px rgba(79,70,229,0.45) !important;
+  box-shadow: 0 10px 36px rgba(79,70,229,0.45), 0 0 20px rgba(79,70,229,0.25) !important;
   color: #fff !important;
 }
 
@@ -305,6 +306,7 @@ section { padding: 80px 0 !important; border: none !important; }
   color: var(--text-muted) !important;
   font-size: 18px;
   transition: var(--t);
+  cursor: pointer;
   -webkit-text-fill-color: var(--text-muted) !important;
 }
 
@@ -475,6 +477,7 @@ section { padding: 80px 0 !important; border: none !important; }
   color: var(--text-muted) !important;
   margin-right: 4px !important;
   transition: var(--t) !important;
+  cursor: pointer !important;
   -webkit-text-fill-color: var(--text-muted) !important;
 }
 
@@ -987,6 +990,7 @@ section { padding: 80px 0 !important; border: none !important; }
   color: var(--text-muted) !important;
   font-size: 18px;
   transition: var(--t);
+  cursor: pointer;
   -webkit-text-fill-color: var(--text-muted) !important;
 }
 
@@ -1230,4 +1234,57 @@ section { padding: 80px 0 !important; border: none !important; }
   color: var(--text-muted) !important;
   font-size: 16px !important;
   margin-bottom: 36px !important;
+}
+
+/* ======================== FOCUS STATES — Keyboard navigation ======================== */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Remove outline on mouse click, keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhance focus on buttons for better visibility */
+.btn-gradient:focus-visible,
+.btn-ghost:focus-visible,
+.btn-cv:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 4px;
+}
+
+/* ======================== CURSOR STATES — Interactive elements ======================== */
+.navbar-brand,
+.item-anchor,
+.filter-bar a,
+.filter-bar li a,
+.social-icon-new,
+.contact-social-icon,
+.contact-email-btn,
+.internal-nav a,
+.back-to-top,
+.project-link-btn,
+.btn-gradient,
+.btn-ghost,
+.btn-cv,
+.btn-nav {
+  cursor: pointer;
+}
+
+/* ======================== PREFERS-REDUCED-MOTION ======================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep scroll-progress functional even with no motion */
+  .scroll-progress {
+    transition: none !important;
+  }
 }
