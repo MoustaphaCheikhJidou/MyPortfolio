@@ -5,13 +5,27 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="About El Moustapha Cheikh Jiddou — Education, Experience & Skills">
+   <meta name="description" content="Background, skills and experience of El Moustapha Cheikh Jiddou — AI, Data &amp; Full Stack Engineer.">
    <title>About — El Moustapha Cheikh Jiddou</title>
+
+   <!-- Open Graph -->
+   <meta property="og:title" content="El Moustapha Cheikh Jiddou — AI &amp; Data Engineer">
+   <meta property="og:description" content="Background, skills and experience of El Moustapha Cheikh Jiddou — AI, Data &amp; Full Stack Engineer.">
+   <meta property="og:image" content="https://moustaphacheikhJidou.github.io/MyPortfolio/assets/og-cover.jpg">
+   <meta property="og:url" content="https://moustaphacheikhJidou.github.io/MyPortfolio/about.html">
+   <meta property="og:type" content="website">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="El Moustapha Cheikh Jiddou — AI &amp; Data Engineer">
+   <meta name="twitter:description" content="Background, skills and experience of El Moustapha Cheikh Jiddou — AI, Data &amp; Full Stack Engineer.">
+
+   <!-- Favicon -->
+   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
    <!-- CSS -->
    <link href="css/bootstrap.css" rel="stylesheet">
    <link href="css/style.css" rel="stylesheet">
    <link href="css/modern.css" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="about-page">
@@ -23,7 +37,7 @@
    <nav class="navbar navbar-default color-fill navbar-fixed-top">
       <div class="col-md-12">
          <div class="nav">
-            <button class="btn-nav">
+            <button class="btn-nav" type="button" aria-label="Toggle navigation">
                <span class="icon-bar top"></span>
                <span class="icon-bar middle"></span>
                <span class="icon-bar bottom"></span>
@@ -44,13 +58,17 @@
    </nav>
 
    <!-- ===== STICKY INTERNAL NAV ===== -->
-   <nav class="internal-nav">
+   <nav class="internal-nav" aria-label="Page sections">
       <div class="container">
          <a href="#about">About</a>
          <a href="#education">Education</a>
          <a href="#experience">Experience</a>
          <a href="#skills">Skills</a>
          <a href="#profile">Languages</a>
+         <a href="assets/cv-moustapha-cheikh-jiddou.pdf" download class="btn-cv btn-cv--nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+         </a>
       </div>
    </nav>
 
@@ -61,18 +79,42 @@
             <span class="section-tag">Who I Am</span>
             <h2 class="section-title">About Me</h2>
          </div>
-         <p class="about-lead reveal reveal-delay-1">
-            I am skilled in <strong>data analysis and economics</strong>, with a focus on solving real-world
-            problems through data-driven solutions. I have experience working with statistical methods,
-            <strong>data science tools</strong>, and economic models to uncover insights and support
-            decision-making.
-         </p>
-         <br>
-         <p class="about-lead reveal reveal-delay-2">
-            As <strong>President of the ESP Data Club</strong>, I lead projects and initiatives that
-            encourage collaboration and learning in the field of data science. I am dedicated to continuous
-            learning, teamwork, and delivering accurate and impactful results.
-         </p>
+
+         <div class="about-intro-inner">
+
+            <!-- Avatar -->
+            <div class="about-avatar reveal reveal-delay-1">
+               <img src="assets/profile.jpg"
+                    alt="El Moustapha Cheikh Jiddou"
+                    onerror="this.style.display='none'">
+               <div class="about-avatar__fallback" aria-hidden="true">MJ</div>
+            </div>
+
+            <!-- Text -->
+            <div class="about-text">
+               <p class="about-lead reveal reveal-delay-1">
+                  Final-year engineering student at <strong>École Supérieure Polytechnique (ESP)</strong>,
+                  Mauritania. Currently completing my end-of-study project at the <strong>Banque Nationale
+                  de Mauritanie</strong> — building a multi-LLM RAG chatbot integrated with WhatsApp,
+                  orchestrated via N8N, with OpenAI, Gemini and Ollama as interchangeable backends.
+               </p>
+               <br>
+               <p class="about-lead reveal reveal-delay-2">
+                  I also teach <strong>poverty measurement and household survey methods</strong> at ISMS
+                  (Institut Supérieur des Métiers de la Statistique), and work on development project
+                  management for programs funded by the <strong>Islamic Development Bank</strong> and
+                  <strong>African Development Bank</strong>.
+               </p>
+               <br>
+               <p class="about-lead reveal reveal-delay-3">
+                  My stack spans <strong>Python, Next.js, PostgreSQL + pgvector, Docker</strong>, and
+                  LaTeX — with a strong interest in applied AI, data pipelines, and systems that actually
+                  work in production. As <strong>President of the ESP Data Club</strong>, I lead projects
+                  that encourage collaboration and learning in data science.
+               </p>
+            </div>
+
+         </div>
       </div>
    </section>
 
@@ -88,8 +130,8 @@
             <div class="edu-year">2023 – Present</div>
             <div class="edu-body">
                <h3>Engineer in Statistics and Data Engineering</h3>
-               <p><i class="fa-solid fa-landmark"></i> Higher Polytechnic School of Nouakchott (ESP)</p>
-               <p><i class="fa-solid fa-map-marker-alt"></i> Mauritania</p>
+               <p><i class="fa-solid fa-landmark" aria-hidden="true"></i> Higher Polytechnic School of Nouakchott (ESP)</p>
+               <p><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Mauritania</p>
             </div>
          </div>
 
@@ -97,8 +139,8 @@
             <div class="edu-year">2023 – Present</div>
             <div class="edu-body">
                <h3>Professional Master's in Econometrics and Applied Statistics</h3>
-               <p><i class="fa-solid fa-landmark"></i> Faculty of Legal and Economic Sciences (FSJE)</p>
-               <p><i class="fa-solid fa-map-marker-alt"></i> Mauritania</p>
+               <p><i class="fa-solid fa-landmark" aria-hidden="true"></i> Faculty of Legal and Economic Sciences (FSJE)</p>
+               <p><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Mauritania</p>
             </div>
          </div>
 
@@ -106,8 +148,8 @@
             <div class="edu-year">2020 – 2023</div>
             <div class="edu-body">
                <h3>Bachelor's in Applied Statistics</h3>
-               <p><i class="fa-solid fa-landmark"></i> Higher Institute of Statistical Professions (GP)</p>
-               <p><i class="fa-solid fa-map-marker-alt"></i> Mauritania</p>
+               <p><i class="fa-solid fa-landmark" aria-hidden="true"></i> Higher Institute of Statistical Professions (GP)</p>
+               <p><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Mauritania</p>
             </div>
          </div>
 
@@ -115,8 +157,8 @@
             <div class="edu-year">2019 – 2020</div>
             <div class="edu-body">
                <h3>Mathematics Option Baccalaureate (Bac C)</h3>
-               <p><i class="fa-solid fa-school"></i> Atar High School</p>
-               <p><i class="fa-solid fa-map-marker-alt"></i> Atar, Mauritania</p>
+               <p><i class="fa-solid fa-school" aria-hidden="true"></i> Atar High School</p>
+               <p><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Atar, Mauritania</p>
             </div>
          </div>
 
@@ -138,9 +180,9 @@
                <div class="exp-card">
                   <h3>President &amp; Event Coordinator</h3>
                   <div class="exp-meta">
-                     <span class="exp-badge"><i class="fa-solid fa-building"></i> ESP Data Club</span>
-                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt"></i> Oct 2022 – Present</span>
-                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt"></i> Nouakchott</span>
+                     <span class="exp-badge"><i class="fa-solid fa-building" aria-hidden="true"></i> ESP Data Club</span>
+                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> Oct 2022 – Present</span>
+                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Nouakchott</span>
                   </div>
                   <ul>
                      <li>Event Coordinator (Oct 2022 – Jan 2023): Organized events to promote statistics and data analysis. Coordinated with members to ensure the success of activities.</li>
@@ -155,9 +197,9 @@
                <div class="exp-card">
                   <h3>End-of-Study Internship</h3>
                   <div class="exp-meta">
-                     <span class="exp-badge"><i class="fa-solid fa-building"></i> Caisse des Dépôts et de Développement (CDD)</span>
-                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt"></i> Feb – Jun 2023</span>
-                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt"></i> Nouakchott</span>
+                     <span class="exp-badge"><i class="fa-solid fa-building" aria-hidden="true"></i> Caisse des Dépôts et de Développement (CDD)</span>
+                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> Feb – Jun 2023</span>
+                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Nouakchott</span>
                   </div>
                   <ul>
                      <li>Analyzed banking data from CDD to assess the impact of the credit guarantee system on loan defaults in Mauritania.</li>
@@ -173,9 +215,9 @@
                <div class="exp-card">
                   <h3>Enumerator</h3>
                   <div class="exp-meta">
-                     <span class="exp-badge"><i class="fa-solid fa-building"></i> ANSADE</span>
-                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt"></i> Jul – Aug 2022</span>
-                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt"></i> Nouakchott</span>
+                     <span class="exp-badge"><i class="fa-solid fa-building" aria-hidden="true"></i> ANSADE</span>
+                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> Jul – Aug 2022</span>
+                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Nouakchott</span>
                   </div>
                   <ul>
                      <li>Collected field data for the pilot General Population and Housing Census (RGPH).</li>
@@ -189,9 +231,9 @@
                <div class="exp-card">
                   <h3>Worker Internship</h3>
                   <div class="exp-meta">
-                     <span class="exp-badge"><i class="fa-solid fa-building"></i> ANSADE</span>
-                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt"></i> Apr – Jun 2022</span>
-                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt"></i> Nouakchott</span>
+                     <span class="exp-badge"><i class="fa-solid fa-building" aria-hidden="true"></i> ANSADE</span>
+                     <span class="exp-badge"><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> Apr – Jun 2022</span>
+                     <span class="exp-badge"><i class="fa-solid fa-map-marker-alt" aria-hidden="true"></i> Nouakchott</span>
                   </div>
                   <ul>
                      <li>Developed a methodology for data mapping to design sectoral accounts.</li>
@@ -217,42 +259,42 @@
 
          <div class="skill-grid-new">
             <div class="skill-card-new reveal reveal-delay-1">
-               <div class="skill-icon-box"><i class="fa-solid fa-chart-bar"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-chart-bar" aria-hidden="true"></i></div>
                <h3>Analysis &amp; Modeling</h3>
                <p>Statistical analysis, econometric modeling, surveys, and inquiries.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-2">
-               <div class="skill-icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
                <h3>Software</h3>
                <p>Stata, SPSS, Excel, Eviews, Sphinx, KoboToolbox, ODKCollect, CSPro.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-3">
-               <div class="skill-icon-box"><i class="fa-solid fa-database"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
                <h3>Data Analysis</h3>
                <p>Data cleaning, preparation, and exploitation of statistical and economic data.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-1">
-               <div class="skill-icon-box"><i class="fa-solid fa-robot"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
                <h3>Machine Learning</h3>
                <p>Techniques and tools for advanced machine learning and predictive modeling.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-2">
-               <div class="skill-icon-box"><i class="fa-solid fa-code"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
                <h3>Programming</h3>
                <p>Python, VBA, R, Scala.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-3">
-               <div class="skill-icon-box"><i class="fa-solid fa-server"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
                <h3>Big Data</h3>
                <p>Big Data Processing, Statistical Analysis, Visualization, Data Architecture &amp; Governance.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-1">
-               <div class="skill-icon-box"><i class="fa-solid fa-globe"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
                <h3>Web Development</h3>
-               <p>Front-end: HTML, CSS, JavaScript. Back-end: Django, Flask.</p>
+               <p>Front-end: HTML, CSS, JavaScript. Back-end: Django, Flask, Next.js.</p>
             </div>
             <div class="skill-card-new reveal reveal-delay-2">
-               <div class="skill-icon-box"><i class="fa-solid fa-users"></i></div>
+               <div class="skill-icon-box"><i class="fa-solid fa-users" aria-hidden="true"></i></div>
                <h3>Soft Skills</h3>
                <p>Leadership, project management, communication, teamwork, adaptability.</p>
             </div>
@@ -271,7 +313,7 @@
 
          <div class="profile-grid reveal">
             <div class="profile-card">
-               <h3><i class="fa-solid fa-language"></i> Languages</h3>
+               <h3><i class="fa-solid fa-language" aria-hidden="true"></i> Languages</h3>
                <ul>
                   <li><strong>Arabic:</strong> Native Language</li>
                   <li><strong>French:</strong> DELF C1</li>
@@ -279,7 +321,7 @@
                </ul>
             </div>
             <div class="profile-card">
-               <h3><i class="fa-solid fa-users"></i> Associative Life</h3>
+               <h3><i class="fa-solid fa-users" aria-hidden="true"></i> Associative Life</h3>
                <ul>
                   <li><strong>President of the ESP Data Club:</strong> Since January 2023</li>
                   <li><strong>Event Coordinator at ESP Data Club:</strong> October 2022 – January 2023</li>
@@ -290,6 +332,18 @@
 
       </div>
    </section>
+
+   <!-- ===== FOOTER ===== -->
+   <footer class="site-footer">
+      <div class="footer-inner">
+         <span>© 2025 El Moustapha Cheikh Jiddou</span>
+         <a href="#top" class="back-to-top" aria-label="Back to top">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+               <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+         </a>
+      </div>
+   </footer>
 
    <!-- Scripts -->
    <script src="js/jquery.js"></script>

@@ -5,14 +5,28 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="El Moustapha Cheikh Jiddou — Data Scientist & Engineering Student">
+   <meta name="description" content="Final-year engineering student at ESP Mauritania. Building AI chatbots, RAG systems and data pipelines.">
    <meta name="author" content="El Moustapha Cheikh Jiddou">
-   <title>El Moustapha Cheikh Jiddou</title>
+   <title>El Moustapha Cheikh Jiddou — AI &amp; Data Engineer</title>
+
+   <!-- Open Graph -->
+   <meta property="og:title" content="El Moustapha Cheikh Jiddou — AI &amp; Data Engineer">
+   <meta property="og:description" content="Final-year engineering student at ESP Mauritania. Building AI chatbots, RAG systems and data pipelines.">
+   <meta property="og:image" content="https://moustaphacheikhJidou.github.io/MyPortfolio/assets/og-cover.jpg">
+   <meta property="og:url" content="https://moustaphacheikhJidou.github.io/MyPortfolio/">
+   <meta property="og:type" content="website">
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="El Moustapha Cheikh Jiddou — AI &amp; Data Engineer">
+   <meta name="twitter:description" content="Final-year engineering student at ESP Mauritania. Building AI chatbots, RAG systems and data pipelines.">
+
+   <!-- Favicon -->
+   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
    <!-- CSS -->
    <link href="css/bootstrap.css" rel="stylesheet">
    <link href="css/style.css" rel="stylesheet">
    <link href="css/modern.css" rel="stylesheet">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +38,7 @@
    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="col-md-12">
          <div class="nav">
-            <button class="btn-nav">
+            <button class="btn-nav" type="button" aria-label="Toggle navigation">
                <span class="icon-bar inverted top"></span>
                <span class="icon-bar inverted middle"></span>
                <span class="icon-bar inverted bottom"></span>
@@ -45,7 +59,7 @@
    </nav>
 
    <!-- ===== HERO SECTION ===== -->
-   <div class="hero-section">
+   <div class="hero-section" id="top">
 
       <!-- Animated background -->
       <div class="hero-bg">
@@ -55,7 +69,7 @@
       </div>
 
       <div class="container">
-         <div class="row" style="align-items: center; display: flex; flex-wrap: wrap;">
+         <div class="row hero-row">
 
             <!-- Left: Text content -->
             <div class="col-md-6 hero-content">
@@ -82,16 +96,20 @@
                   <a href="contact.html" class="btn-ghost">
                      <i class="fas fa-envelope"></i> Get in Touch
                   </a>
+                  <a href="assets/cv-moustapha-cheikh-jiddou.pdf" download class="btn-cv">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                     Download CV
+                  </a>
                </div>
 
                <div class="hero-socials">
-                  <a href="https://www.kaggle.com/jiddou26" target="_blank" class="social-icon-new" title="Kaggle">
+                  <a href="https://www.kaggle.com/jiddou26" target="_blank" rel="noopener noreferrer" class="social-icon-new" title="Kaggle">
                      <i class="fab fa-kaggle"></i>
                   </a>
-                  <a href="https://www.linkedin.com/in/el-moustapha-cheikh-jidou/" target="_blank" class="social-icon-new" title="LinkedIn">
+                  <a href="https://www.linkedin.com/in/el-moustapha-cheikh-jidou/" target="_blank" rel="noopener noreferrer" class="social-icon-new" title="LinkedIn">
                      <i class="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="https://github.com/MoustaphaCheikhJidou" target="_blank" class="social-icon-new" title="GitHub">
+                  <a href="https://github.com/MoustaphaCheikhJidou" target="_blank" rel="noopener noreferrer" class="social-icon-new" title="GitHub">
                      <i class="fab fa-github"></i>
                   </a>
                </div>
@@ -99,7 +117,7 @@
             </div>
 
             <!-- Right: Image carousel -->
-            <div class="col-md-6 hero-visual" style="padding: 0 24px;">
+            <div class="col-md-6 hero-visual">
                <div class="hero-image-border">
 
                   <!-- Floating stat chips -->
@@ -112,8 +130,8 @@
                      <span class="stat-chip-label">Years Experience</span>
                   </div>
 
-                  <div id="headslide" class="carousel slide" data-ride="carousel" data-interval="3500">
-                     <div class="carousel-inner" role="listbox">
+                  <div id="headslide" class="carousel slide" data-ride="carousel" data-interval="3500" aria-label="Portfolio images">
+                     <div class="carousel-inner">
                         <div class="item">
                            <img src="img/1.jpg" alt="Data Science" class="hero-carousel-img">
                         </div>
@@ -133,6 +151,18 @@
       </div>
    </div>
 
+   <!-- ===== FOOTER ===== -->
+   <footer class="site-footer">
+      <div class="footer-inner">
+         <span>© 2025 El Moustapha Cheikh Jiddou</span>
+         <a href="#top" class="back-to-top" aria-label="Back to top">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+               <path d="M12 19V5M5 12l7-7 7 7"/>
+            </svg>
+         </a>
+      </div>
+   </footer>
+
    <!-- Scripts -->
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.min.js"></script>
@@ -144,7 +174,7 @@
       window.addEventListener('scroll', function () {
          const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-         const progress = (scrollTop / scrollHeight) * 100;
+         const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
          document.getElementById('scrollProgress').style.width = progress + '%';
       });
 
