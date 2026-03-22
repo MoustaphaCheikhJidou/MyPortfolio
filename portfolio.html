@@ -5,16 +5,21 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="">
-   <meta name="author" content="">
-   <title>El Moustapha Jiddou</title>
-   <!-- Css -->
+   <meta name="description" content="Projects by El Moustapha Cheikh Jiddou — Data Science, Statistics & Web Development">
+   <title>Projects — El Moustapha Cheikh Jiddou</title>
+   <!-- CSS -->
    <link href="css/bootstrap.css" rel="stylesheet">
-   <link href="css/lightbox.css" rel="stylesheet" type="text/css" media="all" />
    <link href="css/style.css" rel="stylesheet">
+   <link href="css/modern.css" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="projects-page">
+
+   <!-- Scroll progress bar -->
+   <div class="scroll-progress" id="scrollProgress"></div>
+
+   <!-- ===== NAVBAR ===== -->
    <nav class="navbar navbar-default color-fill navbar-fixed-top">
       <div class="col-md-12">
          <div class="nav">
@@ -25,7 +30,7 @@
             </button>
          </div>
          <a class="navbar-brand" href="index.html">
-            <img class="logo" src="img/MJ.png" alt="">
+            <img class="logo" src="img/MJ.png" alt="MJ Logo">
          </a>
          <div class="nav-content hideNav hidden">
             <ul class="nav-list vcenter">
@@ -38,214 +43,273 @@
       </div>
    </nav>
 
-   <section class="projects-section">
+   <!-- ===== PROJECTS HEADER ===== -->
+   <div class="projects-header" style="padding-top: 120px;">
       <div class="container">
-         <h2>Projects</h2>
-         <ul class="portfolio-sorting list-inline text-center">
+         <div class="section-header reveal">
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Projects</h2>
+            <p class="section-sub">A selection of data science, statistics and web development projects — each solving a real-world problem.</p>
+         </div>
+
+         <!-- Filter bar -->
+         <ul class="filter-bar portfolio-sorting list-inline text-center reveal">
             <li><a href="#" data-group="all" class="active">All</a></li>
             <li><a href="#" data-group="data-science">Data Science</a></li>
             <li><a href="#" data-group="web-development">Web Development</a></li>
             <li><a href="#" data-group="statistics">Statistics</a></li>
          </ul>
-         <div class="projects-grid">
+      </div>
+   </div>
+
+   <!-- ===== PROJECTS GRID ===== -->
+   <section style="padding-top: 0 !important;">
+      <div class="container">
+         <div class="projects-grid-new" id="projectsGrid">
+
             <!-- Project 1 -->
-            <div class="project-card" data-group="data-science">
-               <img src="img/agr.png" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Agricultural Data Analysis System (Smart Greenhouse)</h2>
-                  <p>Design and development of an intelligent system for analyzing agricultural data, specifically for
-                     greenhouses.</p>
-                  <p><strong>Tech Stack:</strong> Data Science</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/smart-agriculture-system" target="_blank">
+            <div class="project-card-new reveal" data-group="data-science">
+               <div class="project-img-wrap">
+                  <img src="img/agr.png" alt="Agricultural Data Analysis System">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-ds">Data Science</span>
+                  <h3>Agricultural Data Analysis System (Smart Greenhouse)</h3>
+                  <p>Design and development of an intelligent system for analyzing agricultural data, specifically for greenhouses.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/smart-agriculture-system" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 2 -->
-            <div class="project-card" data-group="data-science">
-               <img src="img/clasification.png" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Disaster Tweets NLP Classification</h2>
+            <div class="project-card-new reveal reveal-delay-1" data-group="data-science">
+               <div class="project-img-wrap">
+                  <img src="img/clasification.png" alt="Disaster Tweets NLP">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-ds">Data Science</span>
+                  <h3>Disaster Tweets NLP Classification</h3>
                   <p>Development of a machine learning model to classify tweets related to natural disasters.</p>
-                  <p><strong>Tech Stack:</strong> Data Science</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/disaster-tweets-nlp-classification.git"
-                        target="_blank">
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/disaster-tweets-nlp-classification.git" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 3 -->
-            <div class="project-card" data-group="web-development">
-               <img src="img/survayapp.avif" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Survey Management Application</h2>
-                  <p>Design and implementation of a survey management application to facilitate data collection and
-                     tracking.</p>
-                  <p><strong>Tech Stack:</strong> Web Development</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/survey-data-collection.git" target="_blank">
+            <div class="project-card-new reveal reveal-delay-2" data-group="web-development">
+               <div class="project-img-wrap">
+                  <img src="img/survayapp.avif" alt="Survey Management Application">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-web">Web Development</span>
+                  <h3>Survey Management Application</h3>
+                  <p>Design and implementation of a survey management application to facilitate data collection and tracking.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/survey-data-collection.git" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 4 -->
-            <div class="project-card" data-group="statistics">
-               <img src="img/survayinf.avif" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Survey on the Perception of Influencers</h2>
+            <div class="project-card-new reveal" data-group="statistics">
+               <div class="project-img-wrap">
+                  <img src="img/survayinf.avif" alt="Survey on Influencers">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-stats">Statistics</span>
+                  <h3>Survey on the Perception of Influencers</h3>
                   <p>Design and implementation of a survey on the perception of influencers in Mauritanian society.</p>
-                  <p><strong>Tech Stack:</strong> Statistics</p>
-                  <div class="project-links">
-                     <a href="#" target="_blank">
+                  <div class="project-footer">
+                     <a href="#" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 5 -->
-            <div class="project-card" data-group="web-development">
-               <img src="img/note.webp" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Grade Management Application</h2>
-                  <p>Backend development with the Flask framework and use of HTML, CSS, and JavaScript for the frontend.
-                  </p>
-                  <p><strong>Tech Stack:</strong> Web Development</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/ISMSNotesApp.git" target="_blank">
+            <div class="project-card-new reveal reveal-delay-1" data-group="web-development">
+               <div class="project-img-wrap">
+                  <img src="img/note.webp" alt="Grade Management Application">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-web">Web Development</span>
+                  <h3>Grade Management Application</h3>
+                  <p>Backend development with the Flask framework and use of HTML, CSS, and JavaScript for the frontend.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/ISMSNotesApp.git" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 6 -->
-            <div class="project-card" data-group="statistics">
-               <img src="img/educ.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Determinants of Academic Performance in Mauritania</h2>
+            <div class="project-card-new reveal reveal-delay-2" data-group="statistics">
+               <div class="project-img-wrap">
+                  <img src="img/educ.jpg" alt="Determinants of Academic Performance">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-stats">Statistics</span>
+                  <h3>Determinants of Academic Performance in Mauritania</h3>
                   <p>Analysis of the factors influencing academic performance in Mauritania using R.</p>
-                  <p><strong>Tech Stack:</strong> Statistics</p>
-                  <div class="project-links">
-                     <a href="#" target="_blank">
+                  <div class="project-footer">
+                     <a href="#" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 7 -->
-            <div class="project-card" data-group="data-science">
-               <img src="img/futur.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Bridging the Future Baseline Data Challenge</h2>
-                  <p>A data analysis and predictive modeling project aimed at improving primary school reading proficiency in Mauritania across the regions of Tagant, Gorgol and Brakna under the USDA-funded Bridging the Future initiative.</p>
-                  <p><strong>Tech Stack:</strong> Data Science</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/Bridging-the-Future-Baseline-Data-Challenge" target="_blank">
+            <div class="project-card-new reveal" data-group="data-science">
+               <div class="project-img-wrap">
+                  <img src="img/futur.jpg" alt="Bridging the Future">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-ds">Data Science</span>
+                  <h3>Bridging the Future Baseline Data Challenge</h3>
+                  <p>A data analysis and predictive modeling project aimed at improving primary school reading proficiency in Mauritania across regions of Tagant, Gorgol and Brakna under the USDA-funded initiative.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/Bridging-the-Future-Baseline-Data-Challenge" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 8 -->
-            <div class="project-card" data-group="statistics">
-               <img src="img/pauv.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Poverty & Inequality Forecasting in Mauritania</h2>
-                  <p>Poverty remains a major challenge for Mauritania's development. This project forecasts four key poverty indicators from 1996 to 2030 using survey data and interpolation techniques.</p>
-                  <p><strong>Tech Stack:</strong> Statistics</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania" target="_blank">
+            <div class="project-card-new reveal reveal-delay-1" data-group="statistics">
+               <div class="project-img-wrap">
+                  <img src="img/pauv.jpg" alt="Poverty Forecasting">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-stats">Statistics</span>
+                  <h3>Poverty &amp; Inequality Forecasting in Mauritania</h3>
+                  <p>Forecasts four key poverty indicators from 1996 to 2030 using survey data and interpolation techniques to support policy planning.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 9 -->
-            <div class="project-card" data-group="statistics">
-               <img src="img/pib.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Modeling the Drivers of Mauritania’s GDP with an ARDL Framework</h2>
-                  <p>“Modélisation économétrique des dynamiques de croissance en Mauritanie : Une approche ARDL appliquée.”
-Using a small, clean R workflow, we estimate an AutoRegressive Distributed Lag (ARDL) model that links Mauritania’s</p>
-                  <p><strong>Tech Stack:</strong> Statistics</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/ARDL-Growth-Mauritania" target="_blank">
+            <div class="project-card-new reveal reveal-delay-2" data-group="statistics">
+               <div class="project-img-wrap">
+                  <img src="img/pib.jpg" alt="Mauritania GDP Modeling">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-stats">Statistics</span>
+                  <h3>Modeling the Drivers of Mauritania's GDP with an ARDL Framework</h3>
+                  <p>Econometric modeling of Mauritania's growth dynamics using an AutoRegressive Distributed Lag (ARDL) model in R.</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/ARDL-Growth-Mauritania" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 10 -->
-            <div class="project-card" data-group="web-development">
-               <img src="img/inpc.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>Data Management and Analysis Platform for the NCPI (ANSADE Project)</h2>
-                  <p>The ANSADE platform is a web application developed with Django for managing and analyzing data related to the National Consumer Price Index (NCPI).
-                  </p>
-                  <p><strong>Tech Stack:</strong> Web Development</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/INPC-Data-Management-and-Analysis-Platform" target="_blank">
+            <div class="project-card-new reveal" data-group="web-development">
+               <div class="project-img-wrap">
+                  <img src="img/inpc.jpg" alt="NCPI Data Platform">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-web">Web Development</span>
+                  <h3>Data Management Platform for the NCPI (ANSADE Project)</h3>
+                  <p>A Django web application for managing and analyzing data related to the National Consumer Price Index (NCPI).</p>
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/INPC-Data-Management-and-Analysis-Platform" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
             <!-- Project 11 -->
-            <div class="project-card" data-group="data-science">
-               <img src="img/legal.jpg" alt="Project Image" class="project-image">
-               <div class="project-content">
-                  <h2>RAG-WebSystem – Mauritania Legal Chatbot</h2>
+            <div class="project-card-new reveal reveal-delay-1" data-group="data-science">
+               <div class="project-img-wrap">
+                  <img src="img/legal.jpg" alt="RAG Legal Chatbot">
+                  <div class="project-img-overlay"></div>
+               </div>
+               <div class="project-body">
+                  <span class="tech-tag tag-ds">Data Science</span>
+                  <h3>RAG-WebSystem – Mauritania Legal Chatbot</h3>
                   <p>A Django-based web application integrating a Retrieval-Augmented Generation (RAG) pipeline with a locally hosted GGUF model and the Gemini API.</p>
-                  <p><strong>Tech Stack:</strong> Data Science</p>
-                  <div class="project-links">
-                     <a href="https://github.com/MoustaphaCheikhJidou/RAG-WebSystem" target="_blank">
+                  <div class="project-footer">
+                     <a href="https://github.com/MoustaphaCheikhJidou/RAG-WebSystem" target="_blank" class="project-link-btn">
                         <i class="fab fa-github"></i> View Code
                      </a>
                   </div>
                </div>
             </div>
+
          </div>
       </div>
    </section>
 
-
-   <!-- script -->
+   <!-- Scripts -->
    <script src="js/jquery.js"></script>
    <script src="js/bootstrap.min.js"></script>
-   <script src="js/lightbox-plus-jquery.js"></script>
-   <script src="js/jquery.shuffle.min.js"></script>
    <script src="js/modernizr.js"></script>
    <script src="js/script.js"></script>
    <script>
+      // Scroll progress bar
+      window.addEventListener('scroll', function () {
+         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+         const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+         document.getElementById('scrollProgress').style.width = progress + '%';
+      });
+
+      // Project filter
       const filterLinks = document.querySelectorAll(".portfolio-sorting a");
-      const projectCards = document.querySelectorAll(".project-card");
+      const projectCards = document.querySelectorAll(".project-card-new");
 
       filterLinks.forEach(link => {
          link.addEventListener("click", (e) => {
             e.preventDefault();
-
-            // Remove active class from all links and add to the clicked one
-            filterLinks.forEach(link => link.classList.remove("active"));
+            filterLinks.forEach(l => l.classList.remove("active"));
             link.classList.add("active");
-
             const group = link.getAttribute("data-group");
-
             projectCards.forEach(card => {
-               // Show all if 'all' is selected
                if (group === "all" || card.getAttribute("data-group") === group) {
-                  card.style.display = "block";
+                  card.style.display = "flex";
                } else {
                   card.style.display = "none";
                }
             });
          });
       });
+
+      // Scroll reveal
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(entries => {
+         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.08 });
+      reveals.forEach(r => observer.observe(r));
    </script>
 
 </body>
-
 </html>
