@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock } from "lucide-react";
+import { Clock, ImageOff } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { projects, projectCategories, type ProjectCategory } from "@/lib/data";
 import { withBasePath } from "@/lib/base-path";
@@ -73,14 +73,21 @@ export default function Projects() {
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 className="glass-card group flex flex-col overflow-hidden rounded-xl"
               >
-                <div className="relative aspect-[2/1] w-full overflow-hidden">
-                  <Image
-                    src={withBasePath(project.image)}
-                    alt={project.title}
-                    fill
-                    sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 90vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="relative aspect-[2/1] w-full overflow-hidden bg-bg-2">
+                  {project.image ? (
+                    <Image
+                      src={withBasePath(project.image)}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 90vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center gap-2 text-text-dim">
+                      <ImageOff size={20} aria-hidden="true" />
+                      <span className="text-xs">Preview coming soon</span>
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col gap-3 p-5">
                   <span className="w-fit rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary-light">

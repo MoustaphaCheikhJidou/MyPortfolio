@@ -164,12 +164,27 @@ export default function Hero() {
                 key={tech.label}
                 className="glass-card flex items-center gap-3 rounded-xl px-4 py-3"
               >
-                <span
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold ${tech.colorClass}`}
-                  aria-hidden="true"
-                >
-                  {tech.monogram}
-                </span>
+                {tech.logo ? (
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white/90 p-1.5"
+                    aria-hidden="true"
+                  >
+                    <Image
+                      src={withBasePath(tech.logo)}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                ) : (
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold ${tech.colorClass}`}
+                    aria-hidden="true"
+                  >
+                    {tech.monogram}
+                  </span>
+                )}
                 <span className="text-sm font-medium text-text">{tech.label}</span>
               </div>
             ))}
