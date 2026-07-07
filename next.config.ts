@@ -1,12 +1,14 @@
 import type { NextConfig } from "next";
 
-const repoName = "MyPortfolio";
-// Only prefix paths when actually building in the GitHub Actions deployment
-// workflow. Local `next dev` / `next build` stay at the site root so the
-// portfolio can be previewed at http://localhost:3000/ without the repo
-// name in the URL.
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const basePath = isGithubActions ? `/${repoName}` : "";
+// `NEXT_PUBLIC_BASE_PATH` is set explicitly as a real env var by the
+// GitHub Actions build step (see .github/workflows/nextjs.yml) — it is read
+// directly from `process.env` here rather than proxied through the `env`
+// config key below, because Turbopack does not reliably inline values passed
+// through that key: it left a runtime `process.env` lookup in the client
+// bundle that resolved to "" in the browser, breaking every asset URL and
+// CV download link on the deployed site. Local `next dev` / `next build`
+// leave it unset, so the site stays at the root URL for local preview.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -16,9 +18,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
-  },
 };
 
 export default nextConfig;

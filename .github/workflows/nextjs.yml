@@ -66,15 +66,22 @@ jobs:
         with:
           path: |
             .next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+          # Generate a new cache whenever packages or source files change. No
+          # restore-keys fallback, so a build never silently reuses a cache
+          # from a differing source tree.
+          key: ${{ runner.os }}-nextjs-v2-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          # Set as a real process env var (not via next.config.ts's `env` key)
+          # so Next's standard NEXT_PUBLIC_ build-time inlining reliably
+          # bakes it into the client bundle. Routing it through next.config's
+          # `env` key left a runtime `process.env` lookup that resolved to ""
+          # in the browser, breaking every asset URL and CV download link on
+          # the deployed site.
+          NEXT_PUBLIC_BASE_PATH: /MyPortfolio
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
