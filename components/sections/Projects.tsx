@@ -5,13 +5,15 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, ImageOff } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
-import { projects, projectCategories, type ProjectCategory } from "@/lib/data";
+import { projects, projectCategories, projectCategoryLabels, type ProjectCategory } from "@/lib/data";
 import { withBasePath } from "@/lib/base-path";
+import { useLanguage } from "@/lib/i18n";
 
 type Filter = "all" | ProjectCategory;
 
 export default function Projects() {
   const [filter, setFilter] = useState<Filter>("all");
+  const { t, tr } = useLanguage();
 
   const filtered = useMemo(
     () => (filter === "all" ? projects : projects.filter((p) => p.category === filter)),
@@ -29,13 +31,10 @@ export default function Projects() {
           className="mb-10 text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-widest text-cyan-light">
-            Portfolio
+            {t.projects.tag}
           </span>
-          <h2 className="mt-2 text-3xl font-semibold text-text sm:text-4xl">Projects</h2>
-          <p className="mx-auto mt-3 max-w-xl text-text-muted">
-            A selection of data science, statistics and web development projects — each solving
-            a real-world problem.
-          </p>
+          <h2 className="mt-2 text-3xl font-semibold text-text sm:text-4xl">{t.projects.title}</h2>
+          <p className="mx-auto mt-3 max-w-xl text-text-muted">{t.projects.subtitle}</p>
         </motion.div>
 
         <div
@@ -56,7 +55,7 @@ export default function Projects() {
                   : "glass-card text-text-muted hover:text-text"
               }`}
             >
-              {cat.label}
+              {tr(cat.label)}
             </button>
           ))}
         </div>
@@ -85,19 +84,19 @@ export default function Projects() {
                   ) : (
                     <div className="flex h-full w-full items-center justify-center gap-2 text-text-dim">
                       <ImageOff size={20} aria-hidden="true" />
-                      <span className="text-xs">Preview coming soon</span>
+                      <span className="text-xs">{t.projects.previewSoon}</span>
                     </div>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col gap-3 p-5">
                   <span className="w-fit rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary-light">
-                    {project.categoryLabel}
+                    {tr(projectCategoryLabels[project.category])}
                   </span>
                   <h3 className="font-semibold text-text">{project.title}</h3>
-                  <p className="flex-1 text-sm text-text-muted">{project.description}</p>
+                  <p className="flex-1 text-sm text-text-muted">{tr(project.description)}</p>
                   {project.comingSoon ? (
                     <span className="mt-2 inline-flex w-fit items-center gap-1.5 text-sm text-text-dim">
-                      <Clock size={14} aria-hidden="true" /> Coming Soon
+                      <Clock size={14} aria-hidden="true" /> {t.projects.comingSoon}
                     </span>
                   ) : (
                     <a
@@ -106,7 +105,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="mt-2 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-cyan-light transition-colors hover:text-cyan"
                     >
-                      <GithubIcon size={14} /> View Code
+                      <GithubIcon size={14} /> {t.projects.viewCode}
                     </a>
                   )}
                 </div>

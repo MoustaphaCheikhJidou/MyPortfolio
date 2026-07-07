@@ -5,6 +5,59 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --bg: #f8f9fc;
+  --bg-2: #ffffff;
+  --bg-3: #eef0f7;
+  --surface: rgba(15, 23, 42, 0.035);
+  --surface-hover: rgba(15, 23, 42, 0.06);
+  --border: rgba(15, 23, 42, 0.1);
+  --border-active: rgba(79, 70, 229, 0.45);
+
+  --primary-light: #4f46e5;
+  --cyan: #0891b2;
+  --cyan-light: #0e7490;
+
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+
+  /* shadcn semantic tokens, mapped onto our light indigo palette */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--bg-2);
+  --card-foreground: var(--text);
+  --popover: var(--bg-2);
+  --popover-foreground: var(--text);
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+  --secondary: var(--bg-3);
+  --secondary-foreground: var(--text);
+  --muted: var(--bg-3);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--cyan);
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.577 0.245 27.325);
+  --input: rgba(15, 23, 42, 0.12);
+  --ring: var(--cyan-light);
+  --radius: 0.75rem;
+  --chart-1: var(--primary-light);
+  --chart-2: var(--cyan);
+  --chart-3: var(--cyan-light);
+  --chart-4: #7c3aed;
+  --chart-5: var(--text-dim);
+  --sidebar: var(--bg-2);
+  --sidebar-foreground: var(--text);
+  --sidebar-primary: #4f46e5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--bg-3);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--cyan-light);
+
+  color-scheme: light;
+}
+
+.dark {
   --bg: #06060f;
   --bg-2: #0c0c20;
   --bg-3: #111128;
@@ -21,7 +74,6 @@
   --text-muted: #94a3b8;
   --text-dim: #64748b;
 
-  /* shadcn semantic tokens, mapped onto our dark indigo palette */
   --background: var(--bg);
   --foreground: var(--text);
   --card: var(--bg-2);
@@ -39,7 +91,6 @@
   --destructive: oklch(0.704 0.191 22.216);
   --input: rgba(255, 255, 255, 0.12);
   --ring: var(--cyan-light);
-  --radius: 0.75rem;
   --chart-1: var(--primary-light);
   --chart-2: var(--cyan);
   --chart-3: var(--cyan-light);
@@ -53,6 +104,8 @@
   --sidebar-accent-foreground: var(--text);
   --sidebar-border: var(--border);
   --sidebar-ring: var(--cyan-light);
+
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -113,7 +166,6 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
 }
 
 ::selection {
@@ -133,6 +185,11 @@ html {
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,14 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/base-path";
+import { useLanguage } from "@/lib/i18n";
 import {
   BarChart3,
-  Laptop,
-  Database,
-  Bot,
   Code2,
-  Server,
-  Globe,
   Users,
   Landmark,
   MapPin,
@@ -21,6 +19,7 @@ import {
   Award,
 } from "lucide-react";
 import {
+  profile,
   about,
   education,
   experience,
@@ -34,12 +33,6 @@ import {
 
 const skillIcons: Record<string, React.ComponentType<{ size?: number; "aria-hidden"?: boolean }>> = {
   "chart-bar": BarChart3,
-  "laptop-code": Laptop,
-  database: Database,
-  robot: Bot,
-  code: Code2,
-  server: Server,
-  globe: Globe,
   users: Users,
 };
 
@@ -66,10 +59,12 @@ function SectionHeader({ tag, title }: { tag: string; title: string }) {
 }
 
 export default function About() {
+  const { t, tr } = useLanguage();
+
   return (
     <section id="about" className="py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeader tag="Who I Am" title="About Me" />
+        <SectionHeader tag={t.about.tagWhoIAm} title={t.about.title} />
 
         <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[160px_1fr]">
           <motion.div
@@ -77,9 +72,15 @@ export default function About() {
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
             variants={fadeUp}
-            className="glass-card mx-auto flex h-40 w-40 items-center justify-center rounded-full text-3xl font-bold text-cyan-light"
+            className="glass-card relative mx-auto h-40 w-40 overflow-hidden rounded-full"
           >
-            MJ
+            <Image
+              src={withBasePath(profile.heroImages[0])}
+              alt={profile.name}
+              fill
+              sizes="160px"
+              className="object-cover"
+            />
           </motion.div>
 
           <div className="space-y-4">
@@ -92,7 +93,7 @@ export default function About() {
                 variants={fadeUp}
                 transition={{ delay: i * 0.1 }}
                 className="text-text-muted"
-                dangerouslySetInnerHTML={{ __html: p }}
+                dangerouslySetInnerHTML={{ __html: tr(p) }}
               />
             ))}
           </div>
@@ -100,11 +101,11 @@ export default function About() {
 
         {/* Education */}
         <div className="mt-24">
-          <SectionHeader tag="Academic Path" title="Education" />
+          <SectionHeader tag={t.about.tagAcademic} title={t.about.education} />
           <div className="space-y-4">
             {education.map((e, i) => (
               <motion.div
-                key={e.title}
+                key={e.institution}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
@@ -112,11 +113,22 @@ export default function About() {
                 transition={{ delay: (i % 4) * 0.08 }}
                 className="glass-card flex flex-col gap-3 rounded-xl p-5 sm:flex-row sm:items-center sm:gap-6"
               >
+                {e.logo && (
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-white/90 p-2 shadow-sm">
+                    <Image
+                      src={withBasePath(e.logo)}
+                      alt=""
+                      width={48}
+                      height={48}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                )}
                 <span className="shrink-0 rounded-md bg-primary/15 px-3 py-1 text-xs font-semibold text-primary-light">
-                  {e.year}
+                  {tr(e.year)}
                 </span>
                 <div>
-                  <h3 className="font-semibold text-text">{e.title}</h3>
+                  <h3 className="font-semibold text-text">{tr(e.title)}</h3>
                   <p className="mt-1 flex items-center gap-1.5 text-sm text-text-dim">
                     <Landmark size={14} aria-hidden="true" /> {e.institution}
                   </p>
@@ -131,11 +143,11 @@ export default function About() {
 
         {/* Experience */}
         <div className="mt-24">
-          <SectionHeader tag="Career" title="Professional Experiences" />
+          <SectionHeader tag={t.about.tagCareer} title={t.about.experience} />
           <div className="space-y-6 border-l border-border pl-6">
-            {experience.map((exp, i) => (
+            {experience.map((group, i) => (
               <motion.div
-                key={exp.title}
+                key={group.org}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
@@ -147,23 +159,56 @@ export default function About() {
                   className="absolute -left-[27px] top-6 h-3 w-3 rounded-full bg-cyan"
                   aria-hidden="true"
                 />
-                <h3 className="font-semibold text-text">{exp.title}</h3>
-                <div className="mt-2 flex flex-wrap gap-3 text-xs text-text-dim">
-                  <span className="flex items-center gap-1.5">
-                    <Building2 size={13} aria-hidden="true" /> {exp.org}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Calendar size={13} aria-hidden="true" /> {exp.period}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={13} aria-hidden="true" /> {exp.location}
-                  </span>
+                <div className="flex items-start gap-4">
+                  {group.logo && (
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg bg-white/90 p-2 shadow-sm">
+                      <Image
+                        src={withBasePath(group.logo)}
+                        alt=""
+                        width={48}
+                        height={48}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1">
+                    <h3 className="flex items-center gap-1.5 font-semibold text-text">
+                      <Building2 size={14} aria-hidden="true" /> {group.org}
+                    </h3>
+                    <div
+                      className={
+                        group.roles.length > 1
+                          ? "mt-3 space-y-5 border-l border-border pl-4"
+                          : "mt-3"
+                      }
+                    >
+                      {group.roles.map((role, ri) => (
+                        <div key={ri} className="relative">
+                          {group.roles.length > 1 && (
+                            <span
+                              className="absolute -left-[21px] top-1.5 h-2 w-2 rounded-full bg-primary-light"
+                              aria-hidden="true"
+                            />
+                          )}
+                          <h4 className="text-sm font-semibold text-text">{tr(role.title)}</h4>
+                          <div className="mt-1.5 flex flex-wrap gap-3 text-xs text-text-dim">
+                            <span className="flex items-center gap-1.5">
+                              <Calendar size={12} aria-hidden="true" /> {role.period}
+                            </span>
+                            <span className="flex items-center gap-1.5">
+                              <MapPin size={12} aria-hidden="true" /> {role.location}
+                            </span>
+                          </div>
+                          <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm text-text-muted">
+                            {role.bullets.map((b, bi) => (
+                              <li key={bi}>{tr(b)}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <ul className="mt-3 list-disc space-y-1.5 pl-4 text-sm text-text-muted">
-                  {exp.bullets.map((b, bi) => (
-                    <li key={bi}>{b}</li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
@@ -171,13 +216,13 @@ export default function About() {
 
         {/* Skills */}
         <div className="mt-24">
-          <SectionHeader tag="Expertise" title="Skills" />
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeader tag={t.about.tagExpertise} title={t.about.skills} />
+          <div className="mx-auto grid max-w-md grid-cols-1 gap-5">
             {skills.map((skill, i) => {
               const Icon = skillIcons[skill.icon] ?? Code2;
               return (
                 <motion.div
-                  key={skill.title}
+                  key={skill.icon}
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 0.3 }}
@@ -188,8 +233,8 @@ export default function About() {
                   <div className="mb-3 inline-flex rounded-lg bg-primary/15 p-2.5 text-primary-light">
                     <Icon size={20} aria-hidden />
                   </div>
-                  <h3 className="font-semibold text-text">{skill.title}</h3>
-                  <p className="mt-1.5 text-sm text-text-muted">{skill.description}</p>
+                  <h3 className="font-semibold text-text">{tr(skill.title)}</h3>
+                  <p className="mt-1.5 text-sm text-text-muted">{tr(skill.description)}</p>
                 </motion.div>
               );
             })}
@@ -198,7 +243,7 @@ export default function About() {
 
         {/* Languages & associative life */}
         <div className="mt-24">
-          <SectionHeader tag="Beyond the Data" title="Languages & Associative Life" />
+          <SectionHeader tag={t.about.tagBeyondData} title={t.about.languagesAndAssociative} />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <motion.div
               initial="hidden"
@@ -208,15 +253,29 @@ export default function About() {
               className="glass-card rounded-xl p-6"
             >
               <h3 className="mb-4 flex items-center gap-2 font-semibold text-text">
-                <Languages size={18} aria-hidden="true" /> Languages
+                <Languages size={18} aria-hidden="true" /> {t.about.languages}
               </h3>
-              <ul className="space-y-2 text-sm text-text-muted">
+              <div className="space-y-4">
                 {langs.map((l) => (
-                  <li key={l.name}>
-                    <strong className="text-text">{l.name}:</strong> {l.level}
-                  </li>
+                  <div key={l.name.en}>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="font-medium text-text">{tr(l.name)}</span>
+                      <span className="text-xs text-text-dim">{tr(l.level)}</span>
+                    </div>
+                    <div className="mt-2 flex gap-1.5" role="img" aria-label={`${tr(l.name)}: ${l.proficiency}/4`}>
+                      {Array.from({ length: 4 }).map((_, seg) => (
+                        <span
+                          key={seg}
+                          className={`h-1.5 flex-1 rounded-full ${
+                            seg < l.proficiency ? "bg-gradient-to-r from-primary-light to-cyan" : "bg-surface-hover"
+                          }`}
+                          aria-hidden="true"
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
             <motion.div
               initial="hidden"
@@ -227,13 +286,50 @@ export default function About() {
               className="glass-card rounded-xl p-6"
             >
               <h3 className="mb-4 flex items-center gap-2 font-semibold text-text">
-                <School size={18} aria-hidden="true" /> Associative Life
+                <School size={18} aria-hidden="true" /> {t.about.associativeLife}
               </h3>
-              <ul className="space-y-2 text-sm text-text-muted">
-                {associative.map((a) => (
-                  <li key={a.name}>
-                    <strong className="text-text">{a.name}</strong>
-                    {a.period ? `: ${a.period}` : ""}
+              <ul className="space-y-4 text-sm text-text-muted">
+                {associative.map((group) => (
+                  <li key={group.org.en} className="flex items-start gap-3">
+                    {group.logo ? (
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-white/90 p-1.5 shadow-sm">
+                        <Image
+                          src={withBasePath(group.logo)}
+                          alt=""
+                          width={36}
+                          height={36}
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <span
+                        className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-light"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <div className="flex-1">
+                      <strong className="text-text">{tr(group.org)}</strong>
+                      <div
+                        className={
+                          group.roles.length > 1
+                            ? "mt-1.5 space-y-1.5 border-l border-border pl-3"
+                            : "mt-0.5"
+                        }
+                      >
+                        {group.roles.map((role, ri) => (
+                          <div key={ri} className="relative">
+                            {group.roles.length > 1 && (
+                              <span
+                                className="absolute -left-[15px] top-1.5 h-1.5 w-1.5 rounded-full bg-primary-light"
+                                aria-hidden="true"
+                              />
+                            )}
+                            {tr(role.title)}
+                            {role.period ? `: ${role.period}` : ""}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -243,11 +339,11 @@ export default function About() {
 
         {/* Achievements */}
         <div className="mt-24">
-          <SectionHeader tag="Fiertés" title="Achievements" />
+          <SectionHeader tag={t.about.tagFiertes} title={t.about.achievements} />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {achievements.map((a, i) => (
               <motion.div
-                key={a.title}
+                key={a.title.en}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
@@ -259,8 +355,8 @@ export default function About() {
                   <Trophy size={20} aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-text">{a.title}</h3>
-                  <p className="mt-1.5 text-sm text-text-muted">{a.description}</p>
+                  <h3 className="font-semibold text-text">{tr(a.title)}</h3>
+                  <p className="mt-1.5 text-sm text-text-muted">{tr(a.description)}</p>
                   {a.href && (
                     <a
                       href={a.href}
@@ -268,7 +364,7 @@ export default function About() {
                       rel="noopener noreferrer"
                       className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-cyan-light transition-colors hover:text-cyan"
                     >
-                      <ExternalLink size={13} aria-hidden="true" /> Learn more
+                      <ExternalLink size={13} aria-hidden="true" /> {t.about.learnMore}
                     </a>
                   )}
                 </div>
@@ -279,7 +375,7 @@ export default function About() {
 
         {/* Certifications */}
         <div className="mt-24">
-          <SectionHeader tag="Continuous Learning" title="Certifications" />
+          <SectionHeader tag={t.about.tagLearning} title={t.about.certifications} />
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {certifications.map((c, i) => (
               <motion.a
@@ -312,7 +408,7 @@ export default function About() {
 
         {/* Interests */}
         <div className="mt-24">
-          <SectionHeader tag="Beyond Work" title="Interests" />
+          <SectionHeader tag={t.about.tagBeyondWork} title={t.about.interests} />
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -322,11 +418,11 @@ export default function About() {
           >
             {interests.map((interest) => (
               <span
-                key={interest}
+                key={interest.en}
                 className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-text-muted"
               >
                 <Award size={14} aria-hidden="true" className="text-primary-light" />
-                {interest}
+                {tr(interest)}
               </span>
             ))}
           </motion.div>

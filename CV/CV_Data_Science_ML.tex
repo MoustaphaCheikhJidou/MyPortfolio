@@ -1,0 +1,107 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
+\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
+\usepackage{paracol}
+\usepackage{xcolor}
+\definecolor{MainGreen}{HTML}{1f2c67}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+
+\colorlet{heading}{MainGreen}
+\colorlet{headingrule}{MainGreen}
+\colorlet{accent}{MainGreen}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+\renewcommand{\cvsectionfont}{\large\bfseries}
+\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+
+\begin{document}
+\name{El Moustpha Cheikh JIDDOU}
+\tagline{\textcolor{MainGreen}{Data Scientist / Machine Learning Engineer}}
+\photoR{2.5cm}{my photo}
+
+\personalinfo{
+  \email{elmoustapha.cheikh.jiddou@gmail.com}
+  \phone{+22248647376}
+  \location{Nouakchott, Mauritanie}
+  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
+  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
+  \printinfo{\faKaggle}{jiddou26}[https://www.kaggle.com/jiddou26]
+  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+}
+\makecvheader
+\columnratio{0.62}
+\begin{paracol}{2}
+
+\cvsection{Expérience}
+
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott}
+\begin{itemize}
+  \item Architecture RAG (Retrieval-Augmented Generation) avec PostgreSQL/pgvector pour interroger la documentation bancaire sans fuite de données.
+  \item Benchmarking de LLM (GPT-4o, Claude 3.5, Gemini 1.5, Llama local) sur performance, coûts et confidentialité.
+  \item Modèles séquentiels (LSTM, GRU) pour anticiper les chutes de puissance photovoltaïque à l'échelle infra-horaire.
+  \item \textbf{Stack :} Python, PyTorch, PostgreSQL/pgvector, FastAPI, Docker.
+\end{itemize}
+\divider
+
+\cvevent{Stagiaire assistant-ingénieur}{Kinross Gold Corporation (Tasiast Mauritanie)}{Juillet 2025 -- Septembre 2025}{Tasiast}
+\begin{itemize}
+  \item Prototypes séquentiels (LSTM/GRU) pour la prévision infra-horaire de puissance à partir de données minute (lags, rampes, encodages temporels).
+  \item Dashboards Python/Gradio et Power BI pour le suivi de KPI géotechniques en quasi temps réel.
+\end{itemize}
+\divider
+
+\cvevent{Stage de fin d'étude}{Caisse des Dépôts et de Développement (CDD)}{Février 2023 -- Juin 2023}{Nouakchott}
+\begin{itemize}
+  \item Modèles économétriques et machine learning (régression logistique, k-NN, Random Forest) pour prédire les risques de défaut de paiement.
+\end{itemize}
+
+\cvsection{Projets}
+
+\cvevent{Grain Size Analysis of 316L Microstructure}{Vision par ordinateur -- segmentation U-Net / OpenCV}{Juin 2025 -- Août 2025}{}
+\begin{itemize}
+  \item Pipeline de segmentation d'images (seuillage, HED, U-Net) et extraction automatique de granulométrie physique.
+\end{itemize}
+\divider
+
+\cvevent{RAG-WebSystem}{IA générative -- Retrieval-Augmented Generation}{Mars 2025 -- Avril 2025}{}
+\begin{itemize}
+  \item Moteur RAG (FAISS, embeddings, LLM open-source) avec API FastAPI et interface React.
+\end{itemize}
+
+\switchcolumn
+
+\cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{Ingénieur d'État -- Statistique \& Ingénierie des données}{2023 -- 2026}{}
+\divider
+\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées}{2023 -- 2025}{}
+
+\cvsection{Compétences}
+{\small
+\textbf{Machine \& Deep Learning :} ML supervisé (régression, SVM, forêts aléatoires) ; deep learning (LSTM/GRU, CNN, Transformers) avec TensorFlow, PyTorch, Keras.\\[2pt]
+\textbf{NLP \& RAG :} embeddings, recherche sémantique (FAISS), modèles de langage, RAG, MLOps (MLflow).\\[2pt]
+\textbf{Langages \& Outils :} Python/PySpark, R, Julia, Scala, SQL, Git/GitHub, Docker, Linux/Bash.
+}
+
+\cvsection{Langues}
+\cvskill{Arabe}{4}{Langue natale}\\
+\divider
+\cvskill{Français}{3}{DALF C1}\\
+\divider
+\cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Certifications clés}
+\begin{itemize}
+  \item Google Advanced Data Analytics -- Professional Certificate \& Capstone
+  \item Introduction to Data Science in Python -- DataCamp
+  \item Python Data Science Toolbox (Part 2) -- DataCamp
+\end{itemize}
+
+\cvsection{Fierté}
+\cvachievement{\faTrophy}{1ère place -- RIMAI Data Science Challenge 2024}{Reconnaissance de plaques d'immatriculation par techniques d'IA.}
+
+\end{paracol}
+\end{document}

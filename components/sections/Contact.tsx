@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { Send, Mail } from "lucide-react";
 import { KaggleIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { profile } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Contact() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="py-24">
       <div className="mx-auto max-w-2xl px-6">
@@ -20,21 +22,18 @@ export default function Contact() {
             <Send size={28} aria-hidden="true" />
           </div>
 
-          <h2 className="gradient-text text-3xl font-semibold sm:text-4xl">Let&apos;s Talk</h2>
-          <p className="mt-4 text-text-muted">
-            Have a project, opportunity, or just want to connect?
-            <br />
-            Drop me a message — I&apos;d love to hear from you.
-          </p>
+          <h2 className="gradient-text text-3xl font-semibold sm:text-4xl">{t.contact.title}</h2>
+          <p className="mt-4 text-text-muted">{t.contact.subtitle}</p>
 
           <a
             href={`mailto:${profile.email}`}
-            className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-cyan px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-light"
+            className="mt-8 inline-flex max-w-full items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-cyan px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-light"
           >
-            <Mail size={16} aria-hidden="true" /> {profile.email}
+            <Mail size={16} aria-hidden="true" className="shrink-0" />
+            <span className="break-all">{profile.email}</span>
           </a>
 
-          <p className="mt-6 text-sm text-text-dim">— or reach me at —</p>
+          <p className="mt-6 text-sm text-text-dim">{t.contact.orReach}</p>
           <p className="mt-1 font-medium text-text">{profile.phone}</p>
 
           <div className="mt-8 flex items-center justify-center gap-4">

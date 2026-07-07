@@ -1,0 +1,109 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
+\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
+\usepackage{paracol}
+\usepackage{xcolor}
+\definecolor{MainGreen}{HTML}{1f2c67}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+
+\colorlet{heading}{MainGreen}
+\colorlet{headingrule}{MainGreen}
+\colorlet{accent}{MainGreen}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+\renewcommand{\cvsectionfont}{\large\bfseries}
+\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+
+\begin{document}
+\name{El Moustpha Cheikh JIDDOU}
+\tagline{\textcolor{MainGreen}{Statisticien-Économiste}}
+\photoR{2.5cm}{my photo}
+
+\personalinfo{
+  \email{elmoustapha.cheikh.jiddou@gmail.com}
+  \phone{+22248647376}
+  \location{Nouakchott, Mauritanie}
+  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
+  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
+  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+}
+\makecvheader
+\columnratio{0.62}
+\begin{paracol}{2}
+
+\cvsection{Expérience}
+
+\cvevent{Stage de fin d'études -- Analyse macroéconomique et modélisation DSGE}{Banque Centrale de Mauritanie (BCM) -- Direction Générale des Études et de la Stabilité Monétaire}{Février 2026 -- Mai 2026}{Nouakchott}
+\begin{itemize}
+  \item Mémoire de master : analyse comparative des régimes monétaires en Mauritanie via un modèle DSGE de petite économie ouverte.
+  \item Analyse des mécanismes de transmission de la politique monétaire, de l'inflation et du taux de change ; exploitation de séries macroéconomiques (BCM, ANSADE, bases internationales).
+  \item \textbf{Environnement :} Économétrie, DSGE, statistiques monétaires, Python, R, GAMS.
+\end{itemize}
+\divider
+
+\cvevent{Stage de fin d'étude}{Caisse des Dépôts et de Développement (CDD)}{Février 2023 -- Juin 2023}{Nouakchott}
+\begin{itemize}
+  \item Analyse de l'impact du système de garantie de crédit sur les défauts de paiement en Mauritanie ; modèles économétriques et machine learning (régression logistique, k-NN, Random Forest).
+  \item Élaboration de rapports statistiques sur les caractéristiques sociodémographiques et financières des emprunteurs.
+\end{itemize}
+\divider
+
+\cvevent{Agent Recenseur \& Stage Ouvrier}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{Avril 2022 -- Août 2022}{Nouakchott}
+\begin{itemize}
+  \item Collecte de données terrain pour le RGPH pilote ; cartographie de données pour les comptes sectoriels et nationaux (logiciel ERETES).
+  \item Formation aux techniques de décomposition du PIB (Programme de Comparaison Internationale) et à l'enquête nationale ZAKAT.
+\end{itemize}
+
+\cvsection{Projets}
+
+\cvevent{Les Déterminants des Performances Scolaires en Mauritanie}{Analyse statistique sous R -- données CONFEMEN (PASEC1)}{Mai 2021 -- Juin 2021}{}
+\begin{itemize}
+  \item Analyse des facteurs socio-démographiques, géographiques et pédagogiques influençant les performances scolaires.
+\end{itemize}
+\divider
+
+\cvevent{Enquête sur la perception des Influenceurs}{Enquête sociologique -- KoboCollect}{Janvier 2022 -- Mars 2022}{}
+\begin{itemize}
+  \item Conception du questionnaire, collecte et analyse autonome des données ; interprétation des tendances sociales.
+\end{itemize}
+
+\switchcolumn
+
+\cvsection{Formation}
+\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées -- Ingénierie Statistique Économique}{2023 -- 2025}{}
+\divider
+\cvevent{Groupe Polytechnique -- ISMS}{Licence Professionnelle en Statistique Appliquée}{2020 -- 2023}{}
+
+\cvsection{Compétences}
+{\small
+\textbf{Analyse \& modélisation :} statistique, économétrie, sondages \& enquêtes, modélisation DSGE, data mining (classification, régression, clustering), séries temporelles.\\[2pt]
+\textbf{Logiciels statistiques :} Stata, SPSS, Eviews, GAMS, Sphinx, R, KoboToolbox, ODK Collect, CSPro, ERETES.\\[2pt]
+\textbf{Data \& Outils :} SQL, PostgreSQL, Python, Excel, QGIS/ArcGIS, Git/GitHub.
+}
+
+\cvsection{Langues}
+\cvskill{Arabe}{4}{Langue natale}\\
+\divider
+\cvskill{Français}{3}{DALF C1}\\
+\divider
+\cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Certifications clés}
+\begin{itemize}
+  \item Google Advanced Data Analytics -- Professional Certificate \& Capstone
+  \item Introduction to Data Science in Python -- DataCamp
+  \item Writing Efficient R Code -- DataCamp
+\end{itemize}
+
+\cvsection{Vie Associative}
+\begin{itemize}
+  \item Président de l'Alumni de l'ISS (poste actuel)
+  \item Responsable des événements et programmes, Association des Statisticiens Mauritaniens
+\end{itemize}
+
+\end{paracol}
+\end{document}

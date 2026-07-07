@@ -4,12 +4,20 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 import { withBasePath } from "@/lib/base-path";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { href: "#top", label: t.nav.home },
+    { href: "#about", label: t.nav.about },
+    { href: "#projects", label: t.nav.projects },
+    { href: "#contact", label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -28,13 +36,13 @@ export default function Navbar() {
         aria-label="Main navigation"
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
       >
-        <a href="#top" className="flex items-center gap-2" aria-label="Home">
+        <a href="#top" className="flex items-center gap-2" aria-label={t.nav.home}>
           <Image
-            src={withBasePath("/images/MJ.png")}
-            alt="MJ logo"
+            src={withBasePath("/images/1.jpg")}
+            alt="El Moustpha Cheikh Jiddou"
             width={36}
             height={36}
-            className="rounded-full"
+            className="rounded-full object-cover"
           />
         </a>
 

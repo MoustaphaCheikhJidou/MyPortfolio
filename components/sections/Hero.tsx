@@ -1,13 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Rocket, Mail, Download } from "lucide-react";
+import { Rocket, Mail, Download, ChevronDown } from "lucide-react";
 import ParticlesBackground from "@/components/ui/ParticlesBackground";
 import RoleRotator from "@/components/ui/RoleRotator";
+import TechCloud from "@/components/ui/TechCloud";
+import CVModal from "@/components/ui/CVModal";
 import { KaggleIcon, GithubIcon, LinkedinIcon } from "@/components/ui/icons";
-import { profile, heroRoles, techStack } from "@/lib/data";
+import { profile, heroRoles, techCategories } from "@/lib/data";
 import { withBasePath } from "@/lib/base-path";
+import { useLanguage } from "@/lib/i18n";
 
 const container = {
   hidden: {},
@@ -21,7 +25,22 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
+const cloudItems = techCategories.flatMap((c) => c.items);
+const seen = new Set<string>();
+const uniqueCloudItems = cloudItems
+  .filter((i) => {
+    if (seen.has(i.label)) return false;
+    seen.add(i.label);
+    return true;
+  })
+  // Keep the orbit readable — the full list lives in the Tech Stack section below.
+  .slice(0, 14);
+
 export default function Hero() {
+  const { t, tr } = useLanguage();
+  const roles = heroRoles.map(tr);
+  const [cvModalOpen, setCvModalOpen] = useState(false);
+
   return (
     <section
       id="top"
@@ -44,13 +63,13 @@ export default function Hero() {
               variants={item}
               className="text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-6xl"
             >
-              Bonjour, je suis <span className="gradient-text">{profile.firstName}</span>{" "}
+              {t.hero.greeting} <span className="gradient-text">{profile.firstName}</span>{" "}
               <span aria-hidden="true">👋</span>
             </motion.h1>
 
             <motion.div variants={item} className="relative mt-3 inline-block">
               <p className="text-xl font-semibold text-primary-light sm:text-2xl">
-                {profile.shortTitle}
+                {tr(profile.shortTitle)}
               </p>
               <svg
                 viewBox="0 0 200 12"
@@ -95,13 +114,13 @@ export default function Hero() {
         <motion.div variants={item} className="glass-card mt-10 rounded-2xl p-6 sm:p-8">
           <div className="flex flex-wrap items-center gap-3 text-lg sm:text-xl">
             <span className="rounded-full bg-primary/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary-light">
-              À propos
+              {t.hero.aboutBadge}
             </span>
             <span className="text-text">
-              Je suis <RoleRotator roles={heroRoles} />
+              {t.hero.iAm} <RoleRotator roles={roles} />
             </span>
           </div>
-          <p className="mt-5 max-w-3xl text-text-muted">{profile.title}</p>
+          <p className="mt-5 max-w-3xl text-text-muted">{tr(profile.title)}</p>
         </motion.div>
 
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
@@ -109,21 +128,21 @@ export default function Hero() {
             href="#projects"
             className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-cyan px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-light"
           >
-            <Rocket size={16} aria-hidden="true" /> View Projects
+            <Rocket size={16} aria-hidden="true" /> {t.hero.viewProjects}
           </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:border-border-active hover:text-cyan-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
           >
-            <Mail size={16} aria-hidden="true" /> Get in Touch
+            <Mail size={16} aria-hidden="true" /> {t.hero.getInTouch}
           </a>
-          <a
-            href={withBasePath(profile.cvHref)}
-            download
+          <button
+            type="button"
+            onClick={() => setCvModalOpen(true)}
             className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-text-muted transition-colors hover:text-text"
           >
-            <Download size={16} aria-hidden="true" /> Download CV
-          </a>
+            <Download size={16} aria-hidden="true" /> {t.hero.downloadCV}
+          </button>
 
           <div className="ml-auto flex items-center gap-3">
             <a
@@ -157,40 +176,20 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="mt-14">
-          <h2 className="text-lg font-semibold text-primary-light">Current Tech Stack</h2>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {techStack.map((tech) => (
-              <div
-                key={tech.label}
-                className="glass-card flex items-center gap-3 rounded-xl px-4 py-3"
-              >
-                {tech.logo ? (
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white/90 p-1.5"
-                    aria-hidden="true"
-                  >
-                    <Image
-                      src={withBasePath(tech.logo)}
-                      alt=""
-                      width={20}
-                      height={20}
-                      className="h-full w-full object-contain"
-                    />
-                  </span>
-                ) : (
-                  <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold ${tech.colorClass}`}
-                    aria-hidden="true"
-                  >
-                    {tech.monogram}
-                  </span>
-                )}
-                <span className="text-sm font-medium text-text">{tech.label}</span>
-              </div>
-            ))}
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold text-primary-light">{t.hero.techStackHeading}</h2>
+            <a
+              href="#tech-stack"
+              className="inline-flex items-center gap-1 text-sm font-medium text-cyan-light transition-colors hover:text-cyan"
+            >
+              {t.hero.seeFullStack} <ChevronDown size={14} aria-hidden="true" />
+            </a>
           </div>
+          <TechCloud items={uniqueCloudItems} />
         </motion.div>
       </motion.div>
+
+      <CVModal open={cvModalOpen} onClose={() => setCvModalOpen(false)} />
     </section>
   );
 }

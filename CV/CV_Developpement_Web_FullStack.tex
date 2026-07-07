@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
+\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
+\usepackage{paracol}
+\usepackage{xcolor}
+\definecolor{MainGreen}{HTML}{1f2c67}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+
+\colorlet{heading}{MainGreen}
+\colorlet{headingrule}{MainGreen}
+\colorlet{accent}{MainGreen}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+\renewcommand{\cvsectionfont}{\large\bfseries}
+\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+
+\begin{document}
+\name{El Moustpha Cheikh JIDDOU}
+\tagline{\textcolor{MainGreen}{Développeur Full Stack}}
+\photoR{2.5cm}{my photo}
+
+\personalinfo{
+  \email{elmoustapha.cheikh.jiddou@gmail.com}
+  \phone{+22248647376}
+  \location{Nouakchott, Mauritanie}
+  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
+  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
+  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+}
+\makecvheader
+\columnratio{0.62}
+\begin{paracol}{2}
+
+\cvsection{Expérience}
+
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott}
+\begin{itemize}
+  \item Architecture microservices conteneurisée (Docker) sur serveurs applicatifs de production on-premise.
+  \item Développement d'un agent conversationnel (Click) connecté aux API REST de WhatsApp, avec module NLU pour le routage dynamique des requêtes.
+  \item Construction d'une API REST (FastAPI) et interface web réactive pour un moteur de recherche documentaire (RAG).
+  \item \textbf{Stack :} Python (FastAPI), React, Docker, API REST, PostgreSQL, N8N.
+\end{itemize}
+\divider
+
+\cvevent{Stagiaire assistant-ingénieur}{Kinross Gold Corporation (Tasiast Mauritanie)}{Juillet 2025 -- Septembre 2025}{Tasiast}
+\begin{itemize}
+  \item Digitalisation d'un processus terrain : chaîne Microsoft Forms $\rightarrow$ SharePoint/Excel Web $\rightarrow$ Power BI avec calcul de KPI en quasi temps réel.
+  \item Mini-dashboard interactif Python/Gradio pour le suivi de conformité géotechnique.
+\end{itemize}
+\divider
+
+\cvevent{Autres expériences}{BCM · CDD · ANSADE}{2022 -- 2026}{}
+\begin{itemize}
+  \item Analyse de données et modélisation statistique dans des contextes bancaires et institutionnels.
+\end{itemize}
+
+\cvsection{Projets}
+
+\cvevent{RAG-WebSystem}{API REST (FastAPI) + interface web réactive (React + Tailwind)}{Mars 2025 -- Avril 2025}{}
+\begin{itemize}
+  \item Application complète : ingestion de documents, recherche sémantique (FAISS), génération de réponses, interface de test et de traçabilité.
+\end{itemize}
+\divider
+
+\cvevent{DataMine App}{Plateforme web collaborative -- Django, HTML/CSS/JS}{2023 -- Aujourd'hui}{}
+\begin{itemize}
+  \item Backend Django et interface utilisateur pour la gestion et le suivi de tâches d'un projet de données géostatistiques.
+\end{itemize}
+
+\switchcolumn
+
+\cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{Ingénieur d'État -- Statistique \& Ingénierie des données}{2023 -- 2026}{}
+\divider
+\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées}{2023 -- 2025}{}
+
+\cvsection{Compétences}
+{\small
+\textbf{Frontend :} HTML, CSS, JavaScript, React, Tailwind.\\[2pt]
+\textbf{Backend \& APIs :} Python (FastAPI, Django, Flask), Java (J2EE, Spring Boot, Spring Cloud, Spring Data, Spring Security, microservices Spring), APIs REST.\\[2pt]
+\textbf{Data, Mobile \& Outils :} PostgreSQL, Docker, Git/GitHub, Flutter, Linux/Bash, Jira, Trello, VS Code, Cursor.
+}
+
+\cvsection{Langues}
+\cvskill{Arabe}{4}{Langue natale}\\
+\divider
+\cvskill{Français}{3}{DALF C1}\\
+\divider
+\cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Certifications clés}
+\begin{itemize}
+  \item Front End Development Libraries -- freeCodeCamp
+  \item Responsive Web Design -- freeCodeCamp
+  \item Introduction to Version Control with Git -- DataCamp
+\end{itemize}
+
+\cvsection{Fierté}
+\cvachievement{\faTrophy}{1ère place -- RIMAI Data Science Challenge 2024}{Reconnaissance de plaques d'immatriculation par techniques d'IA.}
+
+\end{paracol}
+\end{document}

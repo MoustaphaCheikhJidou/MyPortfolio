@@ -4,6 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import FloatingDock from "@/components/ui/FloatingDock";
+import ThemeProvider from "@/components/providers/ThemeProvider";
+import { LanguageProvider } from "@/lib/i18n";
 import { withBasePath } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 
@@ -20,14 +23,14 @@ const inter = Inter({
 });
 
 const siteUrl = "https://moustaphacheikhJidou.github.io/MyPortfolio";
-const title = "El Moustapha Cheikh Jiddou — AI & Data Engineer";
+const title = "El Moustpha Cheikh Jiddou — AI & Data Engineer";
 const description =
-  "Final-year engineering student at ESP Mauritania. Building AI chatbots, RAG systems and data pipelines.";
+  "State Engineer in Statistics & Data Engineering (ESP Mauritania). Building AI chatbots, RAG systems and data pipelines.";
 
 export const metadata: Metadata = {
   title,
   description,
-  authors: [{ name: "El Moustapha Cheikh Jiddou" }],
+  authors: [{ name: "El Moustpha Cheikh Jiddou" }],
   metadataBase: new URL(siteUrl),
   openGraph: {
     title,
@@ -41,7 +44,14 @@ export const metadata: Metadata = {
     description,
   },
   icons: {
-    icon: withBasePath("/favicon.svg"),
+    icon: [
+      { url: withBasePath("/favicon.ico"), sizes: "any" },
+      { url: withBasePath("/favicon-16x16.png"), sizes: "16x16", type: "image/png" },
+      { url: withBasePath("/favicon-32x32.png"), sizes: "32x32", type: "image/png" },
+      { url: withBasePath("/icon-192.png"), sizes: "192x192", type: "image/png" },
+      { url: withBasePath("/icon-512.png"), sizes: "512x512", type: "image/png" },
+    ],
+    apple: withBasePath("/apple-touch-icon.png"),
   },
 };
 
@@ -53,13 +63,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased dark", spaceGrotesk.variable, inter.variable)}
+      suppressHydrationWarning
+      className={cn("h-full antialiased", spaceGrotesk.variable, inter.variable)}
     >
       <body className="flex min-h-full flex-col">
-        <ScrollProgress />
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <LanguageProvider>
+            <ScrollProgress />
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <FloatingDock />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

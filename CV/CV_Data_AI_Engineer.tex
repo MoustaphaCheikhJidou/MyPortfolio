@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
+\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
+\usepackage{paracol}
+\usepackage{xcolor}
+\definecolor{MainGreen}{HTML}{1f2c67}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+
+\colorlet{heading}{MainGreen}
+\colorlet{headingrule}{MainGreen}
+\colorlet{accent}{MainGreen}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+\renewcommand{\cvsectionfont}{\large\bfseries}
+\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+
+\begin{document}
+\name{El Moustpha Cheikh JIDDOU}
+\tagline{\textcolor{MainGreen}{Data \& AI Engineer}}
+\photoR{2.5cm}{my photo}
+
+\personalinfo{
+  \email{elmoustapha.cheikh.jiddou@gmail.com}
+  \phone{+22248647376}
+  \location{Nouakchott, Mauritanie}
+  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
+  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
+  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+}
+\makecvheader
+\columnratio{0.62}
+\begin{paracol}{2}
+
+\cvsection{Expérience}
+
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott}
+\begin{itemize}
+  \item Conception d'un Data Warehouse centralisé : pipelines ELT robustes, orchestration N8N, modèles prédictifs.
+  \item Architecture microservices conteneurisée (Docker) ; agent conversationnel RAG sécurisé (FastAPI, PostgreSQL/pgvector) connecté aux API WhatsApp.
+  \item Benchmarking de LLM (GPT-4o, Claude 3.5, Gemini 1.5, Llama local) et modèles LSTM/GRU pour la prévision de production photovoltaïque.
+  \item \textbf{Stack :} Python, FastAPI, Docker, PostgreSQL/pgvector, PyTorch, React, N8N.
+\end{itemize}
+\divider
+
+\cvevent{Stagiaire assistant-ingénieur}{Kinross Gold Corporation (Tasiast Mauritanie)}{Juillet 2025 -- Septembre 2025}{Tasiast}
+\begin{itemize}
+  \item Dashboards Python/Gradio et Power BI pour le suivi géotechnique (Wall Compliance \& 80/80).
+  \item Prototypes séquentiels (LSTM/GRU) pour la prévision infra-horaire de puissance.
+\end{itemize}
+\divider
+
+\cvevent{Autres expériences}{Banque Centrale de Mauritanie · CDD · ANSADE}{2022 -- 2026}{}
+\begin{itemize}
+  \item Modélisation macroéconomique DSGE (BCM) ; scoring de risque crédit (CDD) ; collecte et traitement de données nationales (ANSADE).
+\end{itemize}
+
+\cvsection{Projets}
+
+\cvevent{RAG-WebSystem}{IA générative : Retrieval-Augmented Generation}{2025}{}
+\begin{itemize}
+  \item Moteur RAG (FAISS, FastAPI, React + Tailwind) pour requêtes documentaires contextualisées.
+\end{itemize}
+\divider
+
+\cvevent{DataMine App}{Plateforme collaborative de données géostatistiques}{2023 -- Aujourd'hui}{}
+\begin{itemize}
+  \item Gestion et suivi de tâches, visualisation de données géostatistiques.
+\end{itemize}
+
+\switchcolumn
+
+\cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{Ingénieur d'État -- Statistique \& Ingénierie des données}{2023 -- 2026}{}
+\divider
+\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées}{2023 -- 2025}{}
+
+\cvsection{Compétences}
+{\small
+\textbf{Data Engineering :} Data Warehouse, pipelines ELT/ETL (Airbyte, dbt), orchestration N8N, Hadoop, Spark, Kafka, SQL, Docker.\\[2pt]
+\textbf{IA \& MLOps :} ML/DL (TensorFlow, PyTorch, Keras), NLP \& RAG, MLflow, Python/PySpark, R, Julia.\\[2pt]
+\textbf{Dev \& Outils :} FastAPI, React, Git/GitHub, Linux/Bash, Jira, Trello, VS Code, Cursor.
+}
+
+\cvsection{Langues}
+\cvskill{Arabe}{4}{Langue natale}\\
+\divider
+\cvskill{Français}{3}{DALF C1}\\
+\divider
+\cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Certifications clés}
+\begin{itemize}
+  \item Google Advanced Data Analytics -- Professional Certificate \& Capstone
+  \item Understanding Data Engineering -- DataCamp
+  \item Relational Database (v8) -- freeCodeCamp
+\end{itemize}
+
+\cvsection{Fierté}
+\cvachievement{\faTrophy}{1ère place -- RIMAI Data Science Challenge 2024}{Reconnaissance de plaques d'immatriculation par techniques d'IA.}
+
+\end{paracol}
+\end{document}
