@@ -4,11 +4,14 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Eye, Download, FileText } from "lucide-react";
 import { cvVersions } from "@/lib/data";
+import { orientedCvVersions } from "@/lib/cv-data";
 import { withBasePath } from "@/lib/base-path";
 import { useLanguage } from "@/lib/i18n";
 
+const allCvVersions = [...cvVersions, ...orientedCvVersions];
+
 export default function CVModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { t, tr } = useLanguage();
+  const { t, tr, locale } = useLanguage();
 
   useEffect(() => {
     if (!open) return;
@@ -64,7 +67,7 @@ export default function CVModal({ open, onClose }: { open: boolean; onClose: () 
             <p className="mt-1.5 text-sm text-text-muted">{t.cvModal.subtitle}</p>
 
             <ul className="mt-6 space-y-3">
-              {cvVersions.map((cv, i) => (
+              {allCvVersions.map((cv, i) => (
                 <motion.li
                   key={cv.id}
                   className="rounded-xl border border-border bg-white/[0.03] p-4 transition-colors hover:border-border-active"
@@ -91,7 +94,7 @@ export default function CVModal({ open, onClose }: { open: boolean; onClose: () 
 
                   <div className="mt-3 flex gap-2">
                     <a
-                      href={withBasePath(cv.href)}
+                      href={withBasePath(cv.href[locale])}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-border px-3 py-2 text-xs font-semibold text-text transition-colors hover:border-border-active hover:text-cyan-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
@@ -99,7 +102,7 @@ export default function CVModal({ open, onClose }: { open: boolean; onClose: () 
                       <Eye size={14} aria-hidden="true" /> {t.cvModal.preview}
                     </a>
                     <a
-                      href={withBasePath(cv.href)}
+                      href={withBasePath(cv.href[locale])}
                       download
                       className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-primary to-cyan px-3 py-2 text-xs font-semibold text-white shadow-md shadow-primary/20 transition-transform hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-light"
                     >

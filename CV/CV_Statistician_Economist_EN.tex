@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Document-local formatting overrides (do not affect style.cls or the
+% other résumés): thin dashed rule under section titles, italic dates,
+% tightened spacing for a compact, professional rendering, calibrated to
+% fill an A4 page in a single column.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{1.5pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0pt,after=\vspace{0pt}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Statistician-Economist -- Econometrics, DSGE Modeling, Survey Methods}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritania} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Professional Experience}
+\cvevent{End-of-Studies Internship -- Macroeconomic Analysis \& DSGE Modeling}{Banque Centrale de Mauritanie (BCM)}{February 2026 -- May 2026}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Produced a master's thesis in Econometrics and Applied Statistics comparing monetary regimes in Mauritania using a small open-economy DSGE model.
+  \item Analyzed monetary policy transmission mechanisms, inflation, exchange rate dynamics, and macroeconomic trends in the Mauritanian context.
+  \item Structured macroeconomic and monetary time series from BCM, ANSADE, and international databases for calibration and simulation.
+  \item Contributed to the department's conjunctural analysis, macroeconomic forecasts, and monetary statistics.
+  \item \textbf{Environment:} Econometrics, DSGE, Python, R, Excel, Julia, GAMS.
+\end{itemize}
+\divider
+\cvevent{End-of-Study Internship}{Caisse des Dépôts et de Développement (CDD)}{February -- June 2023}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Analyzed banking data from CDD to assess the impact of the credit guarantee system on loan defaults in Mauritania.
+  \item Used econometric models and modern machine learning approaches to predict default risks.
+  \item Prepared and interpreted statistical reports on the socio-demographic and financial characteristics of borrowers.
+\end{itemize}
+\divider
+\cvevent{Worker Internship}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{April -- June 2022}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Developed a methodology for data mapping to design sectoral accounts.
+  \item Analyzed sectoral data using ERETES software to compile economic accounts.
+  \item Trained on GDP decomposition techniques as part of the International Comparison Program.
+\end{itemize}
+
+\cvsection{Projects}
+\cvevent{Modeling the Drivers of Mauritania's GDP (ARDL)}{Econometric growth modeling}{}{}
+\begin{itemize}
+  \item Econometric modeling of Mauritania's growth dynamics using an ARDL model in R. \href{https://github.com/MoustaphaCheikhJidou/ARDL-Growth-Mauritania}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Poverty indicator forecasts}{}{}
+\begin{itemize}
+  \item Forecasts four key poverty indicators from 1996 to 2030 using survey data and interpolation techniques. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Determinants of Academic Performance in Mauritania}{Academic performance factor analysis}{}{}
+\begin{itemize}
+  \item Analysis of the factors influencing academic performance in Mauritania using R.
+\end{itemize}
+
+\switchcolumn \cvsection{Education}
+\cvevent{Faculty of Economic Sciences and Management}{FSEG - Mauritania}{October 2023 -- June 2025}{} Master's in Applied Econometrics and Statistics.
+\divider
+\cvevent{Higher Polytechnic School of Nouakchott}{ESP - Mauritania}{October 2023 -- June 2026}{} State Engineer in Statistics and Data Engineering.
+
+\cvsection{Skills}
+{\footnotesize R \textbullet{} Stata \textbullet{} Eviews \textbullet{} GAMS \textbullet{} Excel \textbullet{} Econometrics \textbullet{} DSGE Modeling \textbullet{} Survey Methods}
+
+\cvsection{Languages} \cvskill{Arabic}{4}{Native Language}\\ \divider \cvskill{French}{3}{DALF C1}\\ \divider \cvskill{English}{2}{CEFR B1}
+
+\cvsection{Volunteering}
+{\footnotesize President, ISS Alumni Association}
+
+\cvsection{Certifications}
+{\footnotesize \textbf{Google} Data Analytics \textbullet{} \textbf{DataCamp} Intermediate R}
+
+\end{paracol}
+\end{document}

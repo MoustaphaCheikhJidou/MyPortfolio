@@ -1,106 +1,84 @@
-\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
-\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
-\usepackage{paracol}
-\usepackage{xcolor}
-\definecolor{MainGreen}{HTML}{1f2c67}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-
-\colorlet{heading}{MainGreen}
-\colorlet{headingrule}{MainGreen}
-\colorlet{accent}{MainGreen}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-\renewcommand{\cvItemMarker}{{\small\textbullet}}
-\renewcommand{\cvRatingMarker}{\faCircle}
-\renewcommand{\cvsectionfont}{\large\bfseries}
-\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-
-\begin{document}
-\name{El Moustpha Cheikh JIDDOU}
-\tagline{\textcolor{MainGreen}{Data \& AI Engineer}}
-\photoR{2.5cm}{my photo}
-
-\personalinfo{
-  \email{elmoustapha.cheikh.jiddou@gmail.com}
-  \phone{+22248647376}
-  \location{Nouakchott, Mauritanie}
-  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
-  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
-  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Personnalisations de mise en forme propres à ce document (n'affectent
+% pas style.cls ni les autres CV) : ligne décorative fine sous les titres de
+% section, dates en italique, espacements resserrés pour un rendu compact et
+% professionnel, calibrés pour remplir une page A4 en une seule colonne.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{1.5pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
 }
-\makecvheader
-\columnratio{0.62}
-\begin{paracol}{2}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0pt,after=\vspace{0pt}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Ingénieur Data \& IA -- Pipelines de production, systèmes RAG/LLM et MLOps}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritanie} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
 
-\cvsection{Expérience}
-
-\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott}
+\cvsection{Expériences Professionnelles}
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott, Mauritanie}
 \begin{itemize}
-  \item Conception d'un Data Warehouse centralisé : pipelines ELT robustes, orchestration N8N, modèles prédictifs.
-  \item Architecture microservices conteneurisée (Docker) ; agent conversationnel RAG sécurisé (FastAPI, PostgreSQL/pgvector) connecté aux API WhatsApp.
-  \item Benchmarking de LLM (GPT-4o, Claude 3.5, Gemini 1.5, Llama local) et modèles LSTM/GRU pour la prévision de production photovoltaïque.
-  \item \textbf{Stack :} Python, FastAPI, Docker, PostgreSQL/pgvector, PyTorch, React, N8N.
+  \item Conception et implémentation d'un Data Warehouse centralisé d'entreprise s'appuyant sur des pipelines ELT robustes, l'orchestration automatisée des flux et des modèles prédictifs.
+  \item Architecture et déploiement d'une infrastructure de microservices conteneurisée via des réseaux Docker isolés sur des serveurs applicatifs de production on-premise.
+  \item Mise en œuvre d'une architecture RAG (Retrieval-Augmented Generation) avec base de données PostgreSQL/pgvector pour indexer et interroger la documentation bancaire officielle sans fuite de données.
+  \item Évaluation technique et benchmarking de plusieurs grands modèles de langage (GPT-4o, Claude 3.5, Gemini 1.5, Llama local) afin d'optimiser le compromis performance, coûts d'infrastructure et stricte confidentialité.
+  \item Développement de modèles de réseaux de neurones séquentiels (LSTM, GRU) infra-horaires pour anticiper les chutes rapides de puissance photovoltaïque et planifier la résilience des infrastructures critiques.
+  \item \textbf{Environnement technique :} Python (FastAPI), Data Warehousing, pipelines ELT, Docker, N8N, PostgreSQL (pgvector), PyTorch, React, API REST, Linux/Bash.
 \end{itemize}
 \divider
-
-\cvevent{Stagiaire assistant-ingénieur}{Kinross Gold Corporation (Tasiast Mauritanie)}{Juillet 2025 -- Septembre 2025}{Tasiast}
+\cvevent{Stagiaire assistant-ingénieur -- Département Mine, Service Géotechnique}{Kinross Gold Corporation (Tasiast)}{Juillet 2025 -- Septembre 2025}{Tasiast, Mauritanie}
 \begin{itemize}
-  \item Dashboards Python/Gradio et Power BI pour le suivi géotechnique (Wall Compliance \& 80/80).
-  \item Prototypes séquentiels (LSTM/GRU) pour la prévision infra-horaire de puissance.
+  \item Prévision PV infra-horaire : préparation de données minute (lags, rampes $\Delta P$, encodages temporels) et prototypes séquentiels (LSTM/GRU) pour anticiper les chutes rapides de puissance.
 \end{itemize}
 \divider
-
-\cvevent{Autres expériences}{Banque Centrale de Mauritanie · CDD · ANSADE}{2022 -- 2026}{}
+\cvevent{Stage de Fin d'Étude}{Caisse des Dépôts et de Développement (CDD)}{Février -- Juin 2023}{Nouakchott, Mauritanie}
 \begin{itemize}
-  \item Modélisation macroéconomique DSGE (BCM) ; scoring de risque crédit (CDD) ; collecte et traitement de données nationales (ANSADE).
+  \item Développement de solutions computationnelles pour l'analyse des risques (régression logistique, k-NN, Random Forest) combinant modèles économétriques et machine learning.
 \end{itemize}
 
 \cvsection{Projets}
-
-\cvevent{RAG-WebSystem}{IA générative : Retrieval-Augmented Generation}{2025}{}
+\cvevent{RAG-WebSystem}{Système d'IA générative à base de Retrieval-Augmented Generation}{}{}
 \begin{itemize}
-  \item Moteur RAG (FAISS, FastAPI, React + Tailwind) pour requêtes documentaires contextualisées.
+  \item Moteur RAG de bout en bout : recherche sémantique par vecteurs FAISS sur documents indexés, génération de réponses contextuelles avec un modèle open-source, exposé via un backend FastAPI et une interface React + Tailwind. \href{https://github.com/MoustaphaCheikhJidou/RAG-WebSystem}{GitHub}.
 \end{itemize}
 \divider
-
-\cvevent{DataMine App}{Plateforme collaborative de données géostatistiques}{2023 -- Aujourd'hui}{}
+\cvevent{Grain Size Analysis of 316L Microstructure}{Analyse granulométrique par vision par ordinateur}{}{}
 \begin{itemize}
-  \item Gestion et suivi de tâches, visualisation de données géostatistiques.
+  \item Pipeline de vision par ordinateur segmentant les joints de grains sur des micrographies d'acier inox 316L (500×), comparant seuillage, filtres de gradient, HED et un modèle U-Net, avec une interface Gradio. \href{https://github.com/MoustaphaCheikhJidou/grain-size-analysis-316L-microstructure}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Prévisions d'indicateurs de pauvreté}{}{}
+\begin{itemize}
+  \item Prévisions de quatre indicateurs clés de pauvreté de 1996 à 2030 à partir de données d'enquête et de techniques d'interpolation. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
 \end{itemize}
 
-\switchcolumn
-
-\cvsection{Formation}
-\cvevent{École Supérieure Polytechnique de Nouakchott}{Ingénieur d'État -- Statistique \& Ingénierie des données}{2023 -- 2026}{}
+\switchcolumn \cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{ESP - Mauritanie}{Octobre 2023 -- Juin 2026}{} Ingénieur d'État en Statistique et en Ingénierie des Données.
 \divider
-\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées}{2023 -- 2025}{}
+\cvevent{Faculté des Sciences Économiques et de Gestion}{FSEG - Mauritanie}{Octobre 2023 -- Juin 2025}{} Master en Économétrie et Statistiques Appliquées.
 
 \cvsection{Compétences}
-{\small
-\textbf{Data Engineering :} Data Warehouse, pipelines ELT/ETL (Airbyte, dbt), orchestration N8N, Hadoop, Spark, Kafka, SQL, Docker.\\[2pt]
-\textbf{IA \& MLOps :} ML/DL (TensorFlow, PyTorch, Keras), NLP \& RAG, MLflow, Python/PySpark, R, Julia.\\[2pt]
-\textbf{Dev \& Outils :} FastAPI, React, Git/GitHub, Linux/Bash, Jira, Trello, VS Code, Cursor.
-}
+{\footnotesize Python \textbullet{} FastAPI \textbullet{} Docker \textbullet{} PostgreSQL \textbullet{} PyTorch \textbullet{} n8n \textbullet{} Data Warehousing \textbullet{} ELT \textbullet{} RAG/LLM}
 
-\cvsection{Langues}
-\cvskill{Arabe}{4}{Langue natale}\\
-\divider
-\cvskill{Français}{3}{DALF C1}\\
-\divider
-\cvskill{Anglais}{2}{CEFR B1}
+\cvsection{Langues} \cvskill{Arabe}{4}{Langue natale}\\ \divider \cvskill{Français}{3}{DALF C1}\\ \divider \cvskill{Anglais}{2}{CEFR B1}
 
-\cvsection{Certifications clés}
-\begin{itemize}
-  \item Google Advanced Data Analytics -- Professional Certificate \& Capstone
-  \item Understanding Data Engineering -- DataCamp
-  \item Relational Database (v8) -- freeCodeCamp
-\end{itemize}
+\cvsection{Vie Associative}
+{\small Président de l'ESP Data Club (Janvier 2023 -- Avril 2025)}
 
-\cvsection{Fierté}
-\cvachievement{\faTrophy}{1ère place -- RIMAI Data Science Challenge 2024}{Reconnaissance de plaques d'immatriculation par techniques d'IA.}
+\cvsection{Certifications}
+{\small \textbf{Google} Advanced Data Analytics \textbullet{} \textbf{freeCodeCamp} Relational Database \textbullet{} \textbf{DataCamp} Data Engineering}
 
 \end{paracol}
 \end{document}

@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Document-local formatting overrides (do not affect style.cls or the
+% other résumés): thin dashed rule under section titles, italic dates,
+% tightened spacing for a compact, professional rendering, calibrated to
+% fill an A4 page in a single column.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{2pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.02\baselineskip,after=\vspace{0.02\baselineskip}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Data Analyst -- Dashboards, Reporting Pipelines and Data Visualization}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritania} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Professional Experience}
+\cvevent{Assistant Engineer Intern -- Mining \& Geotechnical Department}{Kinross Gold Corporation (Tasiast)}{July 2025 -- September 2025}{Tasiast, Mauritania}
+\begin{itemize}
+  \item \textbf{Wall Compliance \& 80/80}: built a Python/Gradio dashboard for Toe/Crest/Berm Width/BFA monitoring from CALC and COMPLIANCE files (auto-detection, KPIs, trends \& deltas).
+  \item \textbf{Daily Survey digitization}: Microsoft Forms $\rightarrow$ SharePoint/Excel Web $\rightarrow$ Power BI pipeline with KPIs (\% Done, Backlog, SLA Breach) and near real-time refresh.
+  \item \textbf{PV short-term forecasting}: prepared minute-level data (lags, ramps $\Delta P$, time encodings) and prototyped sequential models (LSTM/GRU) to anticipate power drops.
+  \item \textbf{Environment}: Python (NumPy, pandas, Plotly, Gradio), Power BI, SharePoint/Excel Web, Git.
+\end{itemize}
+\divider
+\cvevent{Data Systems \& IT Architecture Intern}{Banque Nationale de Mauritanie (BNM)}{February 2025 -- Present}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Designed and implemented a centralized enterprise Data Warehouse backed by robust ELT pipelines and automated flow orchestration.
+\end{itemize}
+\divider
+\cvevent{Enumerator}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{July -- August 2022}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Collected field data for the pilot General Population and Housing Census (RGPH).
+  \item Skills acquired: data collection, communication, and fieldwork.
+\end{itemize}
+
+\cvsection{Projects}
+\cvevent{Determinants of Academic Performance in Mauritania}{Academic performance factor analysis}{}{}
+\begin{itemize}
+  \item Analysis of the factors influencing academic performance in Mauritania using R.
+\end{itemize}
+\divider
+\cvevent{Bridging the Future Baseline Data Challenge}{Predictive modeling -- USDA-funded initiative}{}{}
+\begin{itemize}
+  \item Data analysis and predictive modeling to improve primary school reading proficiency in Mauritania (Tagant, Gorgol, Brakna). \href{https://github.com/MoustaphaCheikhJidou/Bridging-the-Future-Baseline-Data-Challenge}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Survey on the Perception of Influencers}{Sociological survey}{}{}
+\begin{itemize}
+  \item Designed and implemented a survey on the perception of influencers in Mauritanian society, with a structured questionnaire on KoboCollect.
+\end{itemize}
+\divider
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Poverty indicator forecasts}{}{}
+\begin{itemize}
+  \item Forecasts four key poverty indicators from 1996 to 2030 using survey data and interpolation techniques. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
+\end{itemize}
+
+\switchcolumn \cvsection{Education}
+\cvevent{Higher Polytechnic School of Nouakchott}{ESP - Mauritania}{October 2023 -- June 2026}{} State Engineer in Statistics and Data Engineering.
+\divider
+\cvevent{Higher Institute of Statistical Professions}{ISS - Mauritania}{October 2020 -- June 2023}{} Bachelor's in Applied Statistics.
+
+\cvsection{Skills}
+{\footnotesize Power BI \textbullet{} Excel \textbullet{} SQL \textbullet{} Python (Pandas, NumPy, Plotly) \textbullet{} KoboToolbox \textbullet{} CSPro \textbullet{} Data Visualization \textbullet{} Field Data Collection}
+
+\cvsection{Languages} \cvskill{Arabic}{4}{Native Language}\\ \divider \cvskill{French}{3}{DALF C1}\\ \divider \cvskill{English}{2}{CEFR B1}
+
+\cvsection{Volunteering}
+{\footnotesize President, ESP Data Club (January 2023 -- April 2025)}
+
+\cvsection{Certifications}
+{\footnotesize \textbf{Google} Data Analytics \textbullet{} \textbf{DataCamp} Data Manipulation in SQL \textbullet{} \textbf{freeCodeCamp} Relational Database}
+
+\end{paracol}
+\end{document}

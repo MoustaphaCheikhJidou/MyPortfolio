@@ -1,0 +1,83 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Document-local formatting overrides (do not affect style.cls or the
+% other résumés): thin dashed rule under section titles, italic dates,
+% tightened spacing for a compact, professional rendering, calibrated to
+% fill an A4 page in a single column.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{1.5pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0pt,after=\vspace{0pt}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Data Scientist -- ML/Deep Learning Models for Forecasting, NLP and Computer Vision}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritania} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Professional Experience}
+\cvevent{Data Systems \& IT Architecture Intern}{Banque Nationale de Mauritanie (BNM)}{February 2025 -- Present}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Implemented a RAG (Retrieval-Augmented Generation) architecture with PostgreSQL/pgvector to query official banking documentation without data leakage.
+  \item Benchmarked several LLMs (GPT-4o, Claude 3.5, Gemini 1.5, local Llama) to optimize performance and confidentiality.
+  \item Developed sequential neural network models (LSTM, GRU) to anticipate rapid photovoltaic power drops.
+\end{itemize}
+\divider
+\cvevent{Assistant Engineer Intern -- Mining \& Geotechnical Department}{Kinross Gold Corporation (Tasiast)}{July 2025 -- September 2025}{Tasiast, Mauritania}
+\begin{itemize}
+  \item PV short-term forecasting: prepared minute-level data (lags, ramps $\Delta P$, time encodings) and prototyped sequential models (LSTM/GRU) to anticipate power drops.
+  \item \textbf{Environment:} Python (NumPy, pandas, Plotly, Gradio), Power BI, Git.
+\end{itemize}
+\divider
+\cvevent{End-of-Study Internship}{Caisse des Dépôts et de Développement (CDD)}{February -- June 2023}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Used econometric models and modern machine learning approaches to predict default risks.
+  \item Developed computational solutions for risk analysis (logistic regression, k-NN, Random Forest).
+\end{itemize}
+
+\cvsection{Projects}
+\cvevent{Grain Size Analysis of 316L Microstructure}{Computer-vision pipeline for grain boundary analysis}{}{}
+\begin{itemize}
+  \item Computer-vision pipeline segmenting grain boundaries in 316L stainless steel micrographs, comparing thresholding, gradient filters, HED, and a U-Net model. \href{https://github.com/MoustaphaCheikhJidou/grain-size-analysis-316L-microstructure}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Disaster Tweets NLP Classification}{Tweet classification using machine learning}{}{}
+\begin{itemize}
+  \item Developed a machine learning model to classify tweets related to natural disasters, using advanced NLP techniques. \href{https://github.com/MoustaphaCheikhJidou/disaster-tweets-nlp-classification.git}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{RAG-WebSystem}{Generative AI system based on Retrieval-Augmented Generation}{}{}
+\begin{itemize}
+  \item End-to-end RAG engine: FAISS semantic search, contextual answer generation, exposed via FastAPI and React. \href{https://github.com/MoustaphaCheikhJidou/RAG-WebSystem}{GitHub}.
+\end{itemize}
+
+\switchcolumn \cvsection{Education}
+\cvevent{Higher Polytechnic School of Nouakchott}{ESP - Mauritania}{October 2023 -- June 2026}{} State Engineer in Statistics and Data Engineering.
+\divider
+\cvevent{Faculty of Economic Sciences and Management}{FSEG - Mauritania}{October 2023 -- June 2025}{} Master's in Applied Econometrics and Statistics.
+
+\cvsection{Skills}
+{\footnotesize PyTorch \textbullet{} TensorFlow \textbullet{} Keras \textbullet{} Python \textbullet{} Deep Learning \textbullet{} NLP \textbullet{} Computer Vision}
+
+\cvsection{Languages} \cvskill{Arabic}{4}{Native Language}\\ \divider \cvskill{French}{3}{DALF C1}\\ \divider \cvskill{English}{2}{CEFR B1}
+
+\cvsection{Volunteering}
+{\footnotesize President, ESP Data Club (January 2023 -- April 2025)}
+
+\cvsection{Certifications}
+{\footnotesize \textbf{Google} Advanced Data Analytics \textbullet{} \textbf{DataCamp} Data Science in Python \textbullet{} \textbf{freeCodeCamp} Data Analysis with Python}
+
+\end{paracol}
+\end{document}

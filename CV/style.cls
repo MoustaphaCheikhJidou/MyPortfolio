@@ -81,7 +81,7 @@
 \usetikzlibrary{arrows}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage[inline]{enumitem}
-\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vspace{0.25\baselineskip}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.15\baselineskip,after=\vspace{0.15\baselineskip}}
 \setlist[itemize]{label=\cvItemMarker}
 \RequirePackage{graphicx}
 \RequirePackage{trimclip}
@@ -89,8 +89,23 @@
 \RequirePackage{multirow,tabularx}
 \RequirePackage{changepage}
 
+% --- Mise en page "une seule colonne" (remplace le système à deux colonnes
+% paracol par des définitions inertes) : les documents peuvent continuer à
+% appeler \columnratio, \begin{paracol}...\end{paracol} et \switchcolumn sans
+% modification ; ces commandes ne font simplement plus rien, et tout le
+% contenu s'enchaîne dans une seule colonne pleine largeur, dans l'ordre où
+% il est écrit dans le fichier .tex (colonne "gauche" puis colonne "droite").
+\RequirePackage{paracol}
+\renewenvironment{paracol}[1]{}{}
+\renewcommand{\columnratio}[2][]{}
+% \switchcolumn is only defined by paracol *inside* the paracol environment on
+% recent releases (older releases defined it at package load time); guard
+% with \ifdef so this class keeps working across paracol versions without
+% changing the single-column behavior documented above.
+\ifdef{\switchcolumn}{\renewcommand{\switchcolumn}[1][]{\par\bigskip}}{\newcommand{\switchcolumn}[1][]{\par\bigskip}}
+
 \setlength{\parindent}{0pt}
-\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
+\newcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\vspace{4pt}}
 
 \newenvironment{fullwidth}{%
   \begin{adjustwidth}{}{\dimexpr-\marginparwidth-\marginparsep\relax}}
@@ -111,17 +126,17 @@
   \IfNoValueTF{#3}{%
     \mbox{\textcolor{accent}%
     {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-    ~\utffriendlydetokenize{#2}\hspace{2em}}%
+    ~\utffriendlydetokenize{#2}}\,{\color{body!60}\textbar}\,%
   }{%
      \if@withhyper%
       \mbox{\textcolor{accent}%
       {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-      ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+      ~\href{#3}{\utffriendlydetokenize{#2}}}\,{\color{body!60}\textbar}\,
      \else%
        \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
       \mbox{\textcolor{accent}
       {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
-      ~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
+      ~{\utffriendlydetokenize{#3#2}}}\,{\color{body!60}\textbar}\,%
      \fi%
   }%
 }%
@@ -228,30 +243,39 @@
 \newcommand{\cvsectionfont}{\LARGE\bfseries}
 \newcommand{\cvsubsectionfont}{\normalsize\bfseries}
 % Réduction de la taille du nom et retrait de la majuscule forcée
-\renewcommand{\namefont}{\LARGE\bfseries} % Taille légèrement plus petite que Huge
+\renewcommand{\namefont}{\Huge\bfseries}
+\newcommand{\taglinefontheader}{\large\itshape}
+% Bandeau d'en-tête pleine largeur, centré, fond teinté sur la couleur
+% d'accent du document courant (calculé au moment de l'appel, pas au
+% chargement de la classe, pour suivre les \colorlet{accent}{...} propres
+% à chaque CV). Les photos éventuellement définies via \photoL/\photoR ne
+% sont pas affichées dans ce style : elles restent sans effet visuel.
 \newcommand{\makecvheader}{%
-  \begingroup
-    \altacv@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
-    \raggedright%
-    {\namefont\color{name}{\@name}\par} % Retire \MakeUppercase pour n'avoir que la première lettre en majuscule
-    \medskip
-    {\taglinefont\color{tagline}\@tagline\par}
-    \medskip
-    {\personalinfofont\@personalinfo\par}
-    \end{minipage}\hfill%
-    \altacv@right@photos\par%
-  \endgroup\medskip
+  \colorlet{cvheaderbg}{accent!8!white}%
+  {\setlength{\fboxsep}{3pt}%
+  \begin{center}
+  \noindent\colorbox{cvheaderbg}{%
+    \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering\vspace{3pt}
+    {\namefont\color{name}\@name\par}
+    \vspace{2pt}
+    {\taglinefontheader\color{tagline}\@tagline\par}
+    \vspace{2pt}
+    {\footnotesize\color{body}\@personalinfo\par}
+    \vspace{3pt}
+    \end{minipage}%
+  }%
+  \end{center}}\vspace{3pt}
 }
 
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
 \newcommand{\cvsection}[2][]{%
-  \nointerlineskip\bigskip%  %% bugfix in v1.6.2
+  \par\vspace{5pt}% \par rend la commande sûre même sans ligne vide avant dans le .tex
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}\medskip
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  {\color{headingrule}\rule{\linewidth}{0.8pt}\par}\vspace{3pt}
 }
 
 \newcommand{\cvsubsection}[1]{%
@@ -259,23 +283,24 @@
   {\color{subheading}\cvsubsectionfont{#1}\par}\medskip
 }
 
+% Titre + organisation sur une seule ligne (gras), date alignée à droite
+% sur la même ligne en couleur d'accent -- reproduit le style de référence
+% "une colonne, dates alignées à droite". Le lieu (#4), s'il est fourni,
+% s'affiche sur une petite ligne grise sous le titre plutôt que d'allonger
+% encore la ligne de droite.
 \newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1\par}
-  \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-  \textbf{\color{accent}#2}\par
-  \smallskip}
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
   \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
-      ~#3}%
-    }}%
+    \hfill{\color{accent}\bfseries\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
   \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
-        ~#4}%
-    }}\par
-  \medskip\normalsize
+    {\small\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{3pt}%
+  \footnotesize% réduit la taille des puces qui suivent (écrites directement
+        % dans le .tex, hors de cette macro) sans devoir toucher chaque document
 }
 
 \newcommand{\cvachievement}[3]{%
@@ -291,6 +316,7 @@
 }
 
 \newcommand{\cvskill}[2]{%
+  \par\noindent
   \textcolor{emphasis}{\textbf{#1}}\hfill
   \BeginAccSupp{method=plain,ActualText={#2}}
   \foreach \x in {1,...,5}{%

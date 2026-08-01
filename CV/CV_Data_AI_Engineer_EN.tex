@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Document-local formatting overrides (do not affect style.cls or the
+% other résumés): thin dashed rule under section titles, italic dates,
+% tightened spacing for a compact, professional rendering, calibrated to
+% fill an A4 page in a single column.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{1.5pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0pt,after=\vspace{0pt}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Data \& AI Engineer -- Production Pipelines, RAG/LLM Systems and MLOps}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritania} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Professional Experience}
+\cvevent{Data Systems \& IT Architecture Intern}{Banque Nationale de Mauritanie (BNM)}{February 2025 -- Present}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Designed and implemented a centralized enterprise Data Warehouse backed by robust ELT pipelines, automated flow orchestration, and predictive models.
+  \item Architected and deployed a containerized microservices infrastructure over isolated Docker networks on on-premise production servers.
+  \item Implemented a RAG (Retrieval-Augmented Generation) architecture with PostgreSQL/pgvector to index and query official banking documentation without data leakage.
+  \item Benchmarked several LLMs (GPT-4o, Claude 3.5, Gemini 1.5, local Llama) to balance performance, infrastructure cost, and strict confidentiality.
+  \item Developed sequential neural network models (LSTM, GRU) to anticipate rapid photovoltaic power drops and plan for critical infrastructure resilience.
+  \item \textbf{Environment:} Python (FastAPI), Data Warehousing, ELT pipelines, Docker, N8N, PostgreSQL (pgvector), PyTorch, React, REST APIs, Linux/Bash.
+\end{itemize}
+\divider
+\cvevent{Assistant Engineer Intern -- Mining \& Geotechnical Department}{Kinross Gold Corporation (Tasiast)}{July 2025 -- September 2025}{Tasiast, Mauritania}
+\begin{itemize}
+  \item PV short-term forecasting: prepared minute-level data (lags, ramps $\Delta P$, time encodings) and prototyped sequential models (LSTM/GRU) to anticipate power drops.
+\end{itemize}
+\divider
+\cvevent{End-of-Study Internship}{Caisse des Dépôts et de Développement (CDD)}{February -- June 2023}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Developed computational solutions for risk analysis (logistic regression, k-NN, Random Forest) combining econometric models and machine learning.
+\end{itemize}
+
+\cvsection{Projects}
+\cvevent{RAG-WebSystem}{Generative AI system based on Retrieval-Augmented Generation}{}{}
+\begin{itemize}
+  \item End-to-end RAG engine: FAISS-based semantic search over indexed documents, contextual answer generation with an open-source model, exposed via a FastAPI backend and a React + Tailwind interface. \href{https://github.com/MoustaphaCheikhJidou/RAG-WebSystem}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Grain Size Analysis of 316L Microstructure}{Computer-vision pipeline for grain boundary analysis}{}{}
+\begin{itemize}
+  \item Computer-vision pipeline segmenting grain boundaries in 316L stainless steel micrographs (500×), comparing thresholding, gradient filters, HED, and a U-Net model, with a Gradio interface. \href{https://github.com/MoustaphaCheikhJidou/grain-size-analysis-316L-microstructure}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Poverty indicator forecasts}{}{}
+\begin{itemize}
+  \item Forecasts four key poverty indicators from 1996 to 2030 using survey data and interpolation techniques. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
+\end{itemize}
+
+\switchcolumn \cvsection{Education}
+\cvevent{Higher Polytechnic School of Nouakchott}{ESP - Mauritania}{October 2023 -- June 2026}{} State Engineer in Statistics and Data Engineering.
+\divider
+\cvevent{Faculty of Economic Sciences and Management}{FSEG - Mauritania}{October 2023 -- June 2025}{} Master's in Applied Econometrics and Statistics.
+
+\cvsection{Skills}
+{\footnotesize Python \textbullet{} FastAPI \textbullet{} Docker \textbullet{} PostgreSQL \textbullet{} PyTorch \textbullet{} n8n \textbullet{} Data Warehousing \textbullet{} ELT \textbullet{} RAG/LLM}
+
+\cvsection{Languages} \cvskill{Arabic}{4}{Native Language}\\ \divider \cvskill{French}{3}{DALF C1}\\ \divider \cvskill{English}{2}{CEFR B1}
+
+\cvsection{Volunteering}
+{\small President, ESP Data Club (January 2023 -- April 2025)}
+
+\cvsection{Certifications}
+{\small \textbf{Google} Advanced Data Analytics \textbullet{} \textbf{freeCodeCamp} Relational Database \textbullet{} \textbf{DataCamp} Data Engineering}
+
+\end{paracol}
+\end{document}

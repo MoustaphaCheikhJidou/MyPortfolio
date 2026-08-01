@@ -38,7 +38,7 @@ export type CVVersion = {
   id: string;
   title: LocalizedString;
   description: LocalizedString;
-  href: string;
+  href: LocalizedString;
   pages: number;
 };
 
@@ -50,48 +50,8 @@ export const cvVersions: CVVersion[] = [
       en: "Full career history — every experience, project, and certification.",
       fr: "Parcours complet — toutes les expériences, projets et certifications.",
     },
-    href: "/cv/cv-principal-complet.pdf",
+    href: { en: "/cv/cv-principal-complet.pdf", fr: "/cv/cv-principal-complet.pdf" },
     pages: 5,
-  },
-  {
-    id: "data-ai-engineer",
-    title: { en: "Data & AI Engineer", fr: "Data & AI Engineer" },
-    description: {
-      en: "General profile focused on data engineering and AI systems.",
-      fr: "Profil généraliste orienté ingénierie des données et systèmes IA.",
-    },
-    href: "/cv/cv-general-data-ai-engineer.pdf",
-    pages: 1,
-  },
-  {
-    id: "statisticien-economiste",
-    title: { en: "Statistician-Economist", fr: "Statisticien-Économiste" },
-    description: {
-      en: "Focused on econometrics, survey methods, and macroeconomic modeling.",
-      fr: "Orienté économétrie, enquêtes statistiques et modélisation macroéconomique.",
-    },
-    href: "/cv/cv-statisticien-economiste.pdf",
-    pages: 1,
-  },
-  {
-    id: "data-science-ml",
-    title: { en: "Data Science / Machine Learning", fr: "Data Science / Machine Learning" },
-    description: {
-      en: "Focused on machine learning, deep learning, and NLP/RAG systems.",
-      fr: "Orienté machine learning, deep learning et systèmes NLP/RAG.",
-    },
-    href: "/cv/cv-data-science-ml.pdf",
-    pages: 1,
-  },
-  {
-    id: "web-fullstack",
-    title: { en: "Web Development / Full Stack", fr: "Développement Web / Full Stack" },
-    description: {
-      en: "Focused on full-stack web applications, APIs, and system integration.",
-      fr: "Orienté applications web full-stack, APIs et intégration de systèmes.",
-    },
-    href: "/cv/cv-developpement-web-fullstack.pdf",
-    pages: 1,
   },
 ];
 

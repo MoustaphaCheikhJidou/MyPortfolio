@@ -1,0 +1,88 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Personnalisations de mise en forme propres à ce document (n'affectent
+% pas style.cls ni les autres CV) : ligne décorative fine sous les titres de
+% section, dates en italique, espacements resserrés pour un rendu compact et
+% professionnel, calibrés pour remplir une page A4 en une seule colonne.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{2pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.5pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.5pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.02\baselineskip,after=\vspace{0.02\baselineskip}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Data Analyst -- Dashboards, Pipelines de Reporting et Visualisation de Données}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritanie} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Expériences Professionnelles}
+\cvevent{Stagiaire assistant-ingénieur -- Département Mine, Service Géotechnique}{Kinross Gold Corporation (Tasiast)}{Juillet 2025 -- Septembre 2025}{Tasiast, Mauritanie}
+\begin{itemize}
+  \item \textbf{Wall Compliance \& 80/80} : conception d'un mini-dashboard Python/Gradio pour le suivi Toe/Crest/Berm Width/BFA à partir des fichiers CALC et COMPLIANCE (auto-détection des entrées, KPI, tendances \& deltas).
+  \item \textbf{Digitalisation Daily Survey} : chaîne Microsoft Forms $\rightarrow$ SharePoint/Excel Web $\rightarrow$ Power BI avec KPI (\% Done, Backlog, SLA Breach) et rafraîchissement quasi temps réel.
+  \item \textbf{Prévision PV infra-horaire} : préparation de données minute (lags, rampes $\Delta P$, encodages temporels) et prototypes séquentiels (LSTM/GRU) pour anticiper les chutes rapides de puissance.
+  \item \textbf{Environnement} : Python (NumPy, pandas, Plotly, Gradio), Power BI, SharePoint/Excel Web, versionnement git.
+\end{itemize}
+\divider
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott, Mauritanie}
+\begin{itemize}
+  \item Conception et implémentation d'un Data Warehouse centralisé d'entreprise s'appuyant sur des pipelines ELT robustes et l'orchestration automatisée des flux.
+\end{itemize}
+\divider
+\cvevent{Agent Recenseur}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{Juillet -- Août 2022}{Nouakchott, Mauritanie}
+\begin{itemize}
+  \item Collecte de données sur le terrain pour le Recensement Général de la Population et de l'Habitat (RGPH) pilote.
+  \item Compétences acquises : collecte de données, communication, travail sur le terrain.
+\end{itemize}
+
+\cvsection{Projets}
+\cvevent{Determinants of Academic Performance in Mauritania}{Analyse des facteurs de performance scolaire}{}{}
+\begin{itemize}
+  \item Analyse des facteurs influençant les performances scolaires en Mauritanie sous R.
+\end{itemize}
+\divider
+\cvevent{Bridging the Future Baseline Data Challenge}{Modélisation prédictive -- initiative financée par l'USDA}{}{}
+\begin{itemize}
+  \item Analyse de données et modélisation prédictive pour améliorer les compétences en lecture des élèves du primaire en Mauritanie (Tagant, Gorgol, Brakna). \href{https://github.com/MoustaphaCheikhJidou/Bridging-the-Future-Baseline-Data-Challenge}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Survey on the Perception of Influencers}{Enquête sociologique}{}{}
+\begin{itemize}
+  \item Conception et réalisation d'une enquête sur la perception des influenceurs dans la société mauritanienne, avec questionnaire structuré sur KoboCollect.
+\end{itemize}
+\divider
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Prévisions d'indicateurs de pauvreté}{}{}
+\begin{itemize}
+  \item Prévisions de quatre indicateurs clés de pauvreté de 1996 à 2030 à partir de données d'enquête et de techniques d'interpolation. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
+\end{itemize}
+
+\switchcolumn \cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{ESP - Mauritanie}{Octobre 2023 -- Juin 2026}{} Ingénieur d'État en Statistique et en Ingénierie des Données.
+\divider
+\cvevent{Institut Supérieur des Métiers de la Statistique}{ISS - Mauritanie}{Octobre 2020 -- Juin 2023}{} Licence Professionnelle en Statistique Appliquée.
+
+\cvsection{Compétences}
+{\footnotesize Power BI \textbullet{} Excel \textbullet{} SQL \textbullet{} Python (Pandas, NumPy, Plotly) \textbullet{} KoboToolbox \textbullet{} CSPro \textbullet{} Visualisation de données \textbullet{} Collecte terrain}
+
+\cvsection{Langues} \cvskill{Arabe}{4}{Langue natale}\\ \divider \cvskill{Français}{3}{DALF C1}\\ \divider \cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Vie Associative}
+{\footnotesize Président de l'ESP Data Club (Janvier 2023 -- Avril 2025)}
+
+\cvsection{Certifications}
+{\footnotesize \textbf{Google} Data Analytics \textbullet{} \textbf{DataCamp} Data Manipulation in SQL \textbullet{} \textbf{freeCodeCamp} Relational Database}
+
+\end{paracol}
+\end{document}

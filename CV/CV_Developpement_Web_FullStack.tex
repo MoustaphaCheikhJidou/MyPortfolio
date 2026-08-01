@@ -1,106 +1,80 @@
-\documentclass[10pt,a4paper,ragged2e,withhyper]{style}
-\geometry{left=1.25cm,right=1.25cm,top=1.4cm,bottom=1.2cm,columnsep=1.2cm}
-\usepackage{paracol}
-\usepackage{xcolor}
-\definecolor{MainGreen}{HTML}{1f2c67}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-
-\colorlet{heading}{MainGreen}
-\colorlet{headingrule}{MainGreen}
-\colorlet{accent}{MainGreen}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-
-\renewcommand{\cvItemMarker}{{\small\textbullet}}
-\renewcommand{\cvRatingMarker}{\faCircle}
-\renewcommand{\cvsectionfont}{\large\bfseries}
-\renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-
-\begin{document}
-\name{El Moustpha Cheikh JIDDOU}
-\tagline{\textcolor{MainGreen}{Développeur Full Stack}}
-\photoR{2.5cm}{my photo}
-
-\personalinfo{
-  \email{elmoustapha.cheikh.jiddou@gmail.com}
-  \phone{+22248647376}
-  \location{Nouakchott, Mauritanie}
-  \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/]
-  \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou]
-  \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/]
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.4cm,bottom=0.4cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Personnalisations de mise en forme propres à ce document (n'affectent
+% pas style.cls ni les autres CV) : ligne décorative fine sous les titres de
+% section, dates en italique, espacements resserrés pour un rendu compact et
+% professionnel, calibrés pour remplir une page A4 en une seule colonne.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{6pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{2pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{2pt}
 }
-\makecvheader
-\columnratio{0.62}
-\begin{paracol}{2}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{2pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{2pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.08\baselineskip,after=\vspace{0.08\baselineskip}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Développeur Full Stack -- Applications Web avec React, Next.js, Django et FastAPI}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritanie} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
 
-\cvsection{Expérience}
-
-\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott}
+\cvsection{Expériences Professionnelles}
+\cvevent{Stagiaire Architecte Systèmes de Données \& IT}{Banque Nationale de Mauritanie (BNM)}{Février 2025 -- Présent}{Nouakchott, Mauritanie}
 \begin{itemize}
-  \item Architecture microservices conteneurisée (Docker) sur serveurs applicatifs de production on-premise.
-  \item Développement d'un agent conversationnel (Click) connecté aux API REST de WhatsApp, avec module NLU pour le routage dynamique des requêtes.
-  \item Construction d'une API REST (FastAPI) et interface web réactive pour un moteur de recherche documentaire (RAG).
-  \item \textbf{Stack :} Python (FastAPI), React, Docker, API REST, PostgreSQL, N8N.
-\end{itemize}
-\divider
-
-\cvevent{Stagiaire assistant-ingénieur}{Kinross Gold Corporation (Tasiast Mauritanie)}{Juillet 2025 -- Septembre 2025}{Tasiast}
-\begin{itemize}
-  \item Digitalisation d'un processus terrain : chaîne Microsoft Forms $\rightarrow$ SharePoint/Excel Web $\rightarrow$ Power BI avec calcul de KPI en quasi temps réel.
-  \item Mini-dashboard interactif Python/Gradio pour le suivi de conformité géotechnique.
-\end{itemize}
-\divider
-
-\cvevent{Autres expériences}{BCM · CDD · ANSADE}{2022 -- 2026}{}
-\begin{itemize}
-  \item Analyse de données et modélisation statistique dans des contextes bancaires et institutionnels.
+  \item Architecture et déploiement d'une infrastructure de microservices conteneurisée via des réseaux Docker isolés sur des serveurs applicatifs de production on-premise.
+  \item Développement et intégration d'un agent conversationnel intelligent sécurisé (Click) connecté aux API REST de WhatsApp, incluant un module NLU personnalisé pour le routage dynamique des requêtes.
+  \item \textbf{Environnement technique :} Python (FastAPI), Docker, PostgreSQL, React, API REST, Linux/Bash.
 \end{itemize}
 
 \cvsection{Projets}
-
-\cvevent{RAG-WebSystem}{API REST (FastAPI) + interface web réactive (React + Tailwind)}{Mars 2025 -- Avril 2025}{}
+\cvevent{DataMine App}{Projet industriel d'entreprise}{}{}
 \begin{itemize}
-  \item Application complète : ingestion de documents, recherche sémantique (FAISS), génération de réponses, interface de test et de traçabilité.
+  \item Conception et développement d'une plateforme collaborative pour la gestion et le suivi des tâches d'un projet de données géostatistiques, avec visualisation de l'avancement sur GitHub. \href{https://github.com/MoustaphaCheikhJidou/DataMineSynergy-App.git}{GitHub}.
 \end{itemize}
 \divider
-
-\cvevent{DataMine App}{Plateforme web collaborative -- Django, HTML/CSS/JS}{2023 -- Aujourd'hui}{}
+\cvevent{Survey Management Application}{Application de gestion d'enquête}{}{}
 \begin{itemize}
-  \item Backend Django et interface utilisateur pour la gestion et le suivi de tâches d'un projet de données géostatistiques.
+  \item Conception et réalisation d'une application de gestion d'enquête pour faciliter la collecte et le suivi des données. \href{https://github.com/MoustaphaCheikhJidou/survey-data-collection.git}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Grade Management Application}{Développement backend Flask}{}{}
+\begin{itemize}
+  \item Développement backend avec le framework Flask et utilisation de HTML, CSS et JavaScript pour le front-end. \href{https://github.com/MoustaphaCheikhJidou/ISMSNotesApp.git}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Data Management Platform for the NCPI}{Application web Django}{}{}
+\begin{itemize}
+  \item Application web Django pour la gestion et l'analyse des données relatives à l'Indice National des Prix à la Consommation (INPC). \href{https://github.com/MoustaphaCheikhJidou/INPC-Data-Management-and-Analysis-Platform}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{RAG-WebSystem}{Backend FastAPI et interface React + Tailwind}{}{}
+\begin{itemize}
+  \item Implémentation d'une chaîne complète : ingestion de documents, vectorisation (FAISS), recherche sémantique, puis génération de réponse contextuelle avec un modèle open-source.
+  \item Construction d'une API REST (FastAPI) et d'une interface web réactive (React + Tailwind) pour tester, tracer et évaluer les réponses. \href{https://github.com/MoustaphaCheikhJidou/RAG-WebSystem}{GitHub}.
 \end{itemize}
 
-\switchcolumn
-
-\cvsection{Formation}
-\cvevent{École Supérieure Polytechnique de Nouakchott}{Ingénieur d'État -- Statistique \& Ingénierie des données}{2023 -- 2026}{}
-\divider
-\cvevent{FSEG Mauritanie}{Master Économétrie et Statistiques Appliquées}{2023 -- 2025}{}
+\switchcolumn \cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{ESP - Mauritanie}{Octobre 2023 -- Juin 2026}{} Ingénieur d'État en Statistique et en Ingénierie des Données.
 
 \cvsection{Compétences}
-{\small
-\textbf{Frontend :} HTML, CSS, JavaScript, React, Tailwind.\\[2pt]
-\textbf{Backend \& APIs :} Python (FastAPI, Django, Flask), Java (J2EE, Spring Boot, Spring Cloud, Spring Data, Spring Security, microservices Spring), APIs REST.\\[2pt]
-\textbf{Data, Mobile \& Outils :} PostgreSQL, Docker, Git/GitHub, Flutter, Linux/Bash, Jira, Trello, VS Code, Cursor.
-}
+{\footnotesize React \textbullet{} Next.js \textbullet{} Django \textbullet{} Flask \textbullet{} FastAPI \textbullet{} Tailwind CSS \textbullet{} API REST \textbullet{} Docker \textbullet{} Git}
 
-\cvsection{Langues}
-\cvskill{Arabe}{4}{Langue natale}\\
-\divider
-\cvskill{Français}{3}{DALF C1}\\
-\divider
-\cvskill{Anglais}{2}{CEFR B1}
+\cvsection{Langues} \cvskill{Arabe}{4}{Langue natale}\\ \divider \cvskill{Français}{3}{DALF C1}\\ \divider \cvskill{Anglais}{2}{CEFR B1}
 
-\cvsection{Certifications clés}
-\begin{itemize}
-  \item Front End Development Libraries -- freeCodeCamp
-  \item Responsive Web Design -- freeCodeCamp
-  \item Introduction to Version Control with Git -- DataCamp
-\end{itemize}
+\cvsection{Vie Associative}
+{\footnotesize Président de l'ESP Data Club (Janvier 2023 -- Avril 2025)}
 
-\cvsection{Fierté}
-\cvachievement{\faTrophy}{1ère place -- RIMAI Data Science Challenge 2024}{Reconnaissance de plaques d'immatriculation par techniques d'IA.}
+\cvsection{Certifications}
+{\footnotesize \textbf{freeCodeCamp} Front End Development Libraries \textbullet{} Responsive Web Design \textbullet{} \textbf{DataCamp} Introduction to Version Control with Git}
 
 \end{paracol}
 \end{document}
