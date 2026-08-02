@@ -50,8 +50,8 @@ export const cvVersions: CVVersion[] = [
       en: "Full career history — every experience, project, and certification.",
       fr: "Parcours complet — toutes les expériences, projets et certifications.",
     },
-    href: { en: "/cv/cv-principal-complet.pdf", fr: "/cv/cv-principal-complet.pdf" },
-    pages: 5,
+    href: { en: "/cv/cv-principal-complet-en.pdf", fr: "/cv/cv-principal-complet-fr.pdf" },
+    pages: 4,
   },
 ];
 

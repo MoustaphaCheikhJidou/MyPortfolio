@@ -1,0 +1,150 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1.25cm,right=1.25cm,top=1cm,bottom=1cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Document-local formatting overrides (do not affect style.cls or the
+% other résumés): thin dashed rule under section titles, italic dates,
+% tightened spacing for a more compact, professional rendering.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{4pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{1pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{2pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{2pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{2pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.08\baselineskip,after=\vspace{0.08\baselineskip}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Engineering Student at the Higher Polytechnic School}} \photoR{2.5cm}{my photo}  \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritania} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faKaggle}{jiddou26}[https://www.kaggle.com/jiddou26] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2} \cvsection{Professional Experience}
+\cvevent{Data Systems \& IT Architecture Intern}{Banque Nationale de Mauritanie (BNM)}{February 2025 -- Present}{Nouakchott, Mauritania}
+\begin{itemize}
+    \item Designed and implemented a centralized enterprise Data Warehouse backed by robust ELT pipelines, automated flow orchestration, and predictive models.
+
+    \item Architected and deployed a containerized microservices infrastructure over isolated Docker networks on on-premise production servers.
+
+    \item Built a secure conversational agent (Click) connected to the WhatsApp REST API, including a custom NLU module for dynamic query routing.
+
+    \item Implemented a RAG (Retrieval-Augmented Generation) architecture with a PostgreSQL/pgvector database to index and query official banking documentation without data leakage.
+
+    \item Benchmarked several large language models (GPT-4o, Claude 3.5, Gemini 1.5, local Llama) to optimize the trade-off between performance, infrastructure cost, and strict confidentiality.
+
+    \item Developed sequential neural network models (LSTM, GRU) to anticipate rapid photovoltaic power drops and plan for critical infrastructure resilience.
+
+    \item \textbf{Technical environment:} Python (FastAPI), Data Warehousing, ELT pipelines, Docker, N8N, PostgreSQL (pgvector), PyTorch, React, REST APIs, Linux/Bash.
+\end{itemize}
+\divider
+\cvevent{End-of-Studies Internship -- Macroeconomic Analysis and DSGE Modeling}{Banque Centrale de Mauritanie (BCM) -- Directorate General of Economic Studies and Monetary Stability}{February 2026 -- May 2026}{Nouakchott, Mauritania}
+
+\begin{itemize}
+  \item Produced a master's thesis in Econometrics and Applied Statistics on the comparative analysis of monetary regimes in Mauritania using a small open-economy DSGE model.
+
+  \item Analyzed monetary policy transmission mechanisms, inflation, exchange rate dynamics, and macroeconomic dynamics in the Mauritanian context.
+
+  \item Structured and exploited macroeconomic and monetary time series from BCM, ANSADE, and international databases for calibration and economic simulations.
+
+  \item Participated in the activities of the Directorate General of Economic Studies and Monetary Stability: conjunctural analysis, macroeconomic forecasts, monetary statistics, and economic studies.
+
+  \item Developed economic modeling and simulation tools to compare several monetary policy regimes and assess their impact on macroeconomic stability.
+
+  \item Produced quantitative analyses, economic charts, and statistical indicators to support results interpretation and decision-making.
+
+  \item \textbf{Environment:} Econometrics, DSGE, macroeconomic analysis, monetary statistics, Python, R, Excel, Julia, GAMS, economic modeling, data analysis.
+\end{itemize}
+
+\divider
+\cvevent{Lecturer -- Poverty \& Household Living Conditions + Sociological Survey Methods}{Institut Supérieur des Métiers de la Statistique (ISS)}{February 2026 -- June 2026}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Renewed for a second consecutive year with an additional course module.
+  \item Taught the Poverty and Household Living Conditions module (improved edition).
+  \item Designed and delivered a new module: Sociological Survey Methods (survey methodology, sampling, questionnaire design, data analysis).
+  \item Supervised tutorials and practical sessions with field survey simulations using KoboToolbox, CSPro, and Stata.
+  \item Directed and evaluated final-year projects (PFE) and supervised worker internships.
+  \item Developed course materials, case studies, and evaluation frameworks for both modules.
+\end{itemize}
+\divider
+\cvevent{Lecturer -- Poverty and Household Living Conditions}{Institut Supérieur des Métiers de la Statistique (ISS)}{February 2025 -- June 2025}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item First higher education teaching experience at the institution from which I graduated.
+  \item Prepared and delivered lectures on poverty measurement methodologies and household living conditions analysis.
+  \item Designed and supervised tutorials (TD) and practical sessions (TP), using real case studies from national household surveys.
+  \item Provided personalized academic support and continuous student monitoring throughout the semester.
+  \item Supervised final-year projects (PFE) and worker internships, with mentoring on methodological and technical aspects.
+\end{itemize}
+\divider
+
+\cvevent{Assistant Engineer Intern -- Mining Department, Geotechnical Service}{Kinross Gold Corporation (Tasiast Mauritania)}{July 2025 -- September 2025}{Tasiast, Mauritania}
+\begin{itemize}
+  \item \textbf{Wall Compliance \& 80/80}: designed a Python/Gradio mini-dashboard for \textit{Toe/Crest/Berm Width/BFA} monitoring from \texttt{CALC} and \texttt{COMPLIANCE} files (auto-detection of inputs, KPIs, 80/80 bars, trends \& deltas).
+  \item \textbf{Daily Survey digitization}: \textbf{Microsoft} \textit{Forms} $\rightarrow$ \textit{SharePoint/Excel Web} $\rightarrow$ \textit{Power BI} pipeline with typing/validation, duration calculations, KPIs (\% Done, Backlog, SLA Breach), and near real-time refresh.
+  \item \textbf{Short-term PV forecasting}: preparation of minute-level data (\textit{lags}, ramps \(\Delta P\), time encodings) and sequential prototypes (LSTM/GRU) to anticipate rapid power drops and improve alert \textit{lead time}.
+  \item \textbf{Practices}: \texttt{git} versioning, technical documentation, skills transfer to field/process teams.
+  \item \textbf{Environment}: Python (NumPy, pandas, Plotly, Gradio), Power BI, SharePoint/Excel Web.
+\end{itemize}
+\divider
+
+\cvevent{President \& Event Coordinator}{ESP Data Club}{October 2022 -- April 2025}{Nouakchott, Mauritania} \begin{itemize} \item \textbf{Event Coordinator} (October 2022 -- January 2023): Organized events to promote statistics and data analysis. Coordinated with members to ensure the success of activities. \item \textbf{President} (January 2023 -- April 2025): Led the club, set strategic objectives, managed data collection and analysis projects, developed academic partnerships. \item Skills: Leadership, project management, event planning, communication. \item\href{https://esp-data-club.com/}{See the Club}. \end{itemize} \divider \cvevent{End-of-Study Internship}{Caisse des Dépôts et de Développement (CDD)}{February 2023 -- June 2023}{Nouakchott, Mauritania} \begin{itemize} \item Analyzed banking data from CDD to assess the impact of the credit guarantee system on loan defaults in Mauritania. \item Used econometric models and modern machine learning approaches to predict default risks. \item Prepared and interpreted statistical reports on the socio-demographic and financial characteristics of borrowers. \item Developed computational solutions for risk analysis using algorithms such as logistic regression, k-NN, and Random Forest. \item\href{https://github.com/MoustaphaCheikhJidou/credit-default-analysis.git}{See the analyses}. \end{itemize} \divider \cvevent{Enumerator}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{July 2022 -- August 2022}{Nouakchott, Mauritania} \begin{itemize} \item Collected field data for the pilot General Population and Housing Census (RGPH). \item Skills acquired: data collection, communication, fieldwork. \end{itemize} \divider \cvevent{Worker Internship}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{April 2022 -- June 2022}{Nouakchott, Mauritania} \begin{itemize} \item Developed a methodology for data mapping to design sectoral accounts. \item Participated in the collection and processing of economic branch data for national accounts. \item Analyzed sectoral data using ERETES software to compile economic accounts. \item Trained on GDP decomposition techniques as part of the International Comparison Program. \item Contributed to the national survey process for the mobilization and quantification of ZAKAT, including enumerator training. \end{itemize}
+
+\cvsection{Projects}
+\cvevent{Grain Size Analysis of 316L Microstructure}{Academic project: Computer-vision grain size analysis}{June 2025 -- August 2025}{Nouakchott, Mauritania}
+\begin{itemize}
+  \item Developed a complete image-processing pipeline to segment grain boundaries in 316L stainless steel from 500× micrographs.
+  \item Implemented and compared segmentation methods: classical thresholding, gradient filters, the HED model (Caffe/OpenCV), and a convolutional U-Net trained on real and synthetic data.
+  \item Automatic extraction of grain size in physical units (µm, µm²) via pixel/micron calibration and computation of statistics (size distribution, axes, circularity).
+  \item Created an interactive interface (Gradio) to load a micrograph, segment grains, and export geometric features to CSV.
+  \item \href{https://github.com/MoustaphaCheikhJidou/grain-size-analysis-316L-microstructure}{See the GitHub repository}.
+\end{itemize}
+\divider
+
+
+\cvevent{RAG‑WebSystem}{Academic project: Generative AI system based on Retrieval‑Augmented Generation}{March 2025 -- April 2025}{Nouakchott, Mauritania} \begin{itemize} \item Designed a RAG engine (Retrieval + LLM) able to answer queries by drawing on external documents indexed by vectors. \item Implemented a complete pipeline: ingestion, vectorization (FAISS), semantic search, then contextual answer generation with an open‑source model. \item Built a REST API (FastAPI) and a reactive web interface (React + Tailwind) to test, trace, and evaluate the answers. \item\href{https://github.com/MoustaphaCheikhJidou/RAG-WebSystem}{See the GitHub repository}. \end{itemize} \divider \cvevent{DataMine App}{Academic project: Corporate industrial project}{November 2023 -- Present}{Nouakchott, Mauritania} \begin{itemize} \item Designed and developed a collaborative platform for managing and tracking tasks on a geostatistical data project. \item Analyzed geostatistical data to optimize resource management and improve decision-making. \item Created an intuitive user interface for managing and visualizing tasks on GitHub. \item\href{https://github.com/MoustaphaCheikhJidou/DataMineSynergy-App.git}{See the project here}. \end{itemize} \divider \cvevent{Agricultural Data Analysis System (Smart Greenhouse)}{Academic project: Entrepreneurship and innovation project}{November 2023 -- June 2024}{Nouakchott, Mauritania} \begin{itemize} \item Designed and developed an intelligent system for analyzing agricultural data, specifically for greenhouses. \item Implemented IoT sensors for real-time data collection and created interactive dashboards for monitoring. \item Applied machine learning techniques to optimize resource management and improve agricultural yields. \item\href{https://github.com/MoustaphaCheikhJidou/smart-agriculture-system.git}{See the project here}. \end{itemize} \divider \cvevent{Disaster Tweets NLP Classification}{Academic project: Introduction to big data}{January 2022 -- February 2022}{Nouakchott, Mauritania} \begin{itemize} \item Developed a machine learning model to classify tweets related to natural disasters. \item Processed massive data and applied advanced NLP (Natural Language Processing) techniques. \item Used Python libraries to build and evaluate the model. \item\href{https://github.com/MoustaphaCheikhJidou/disaster-tweets-nlp-classification.git}{See the project here}. \end{itemize} \divider \cvevent{Survey Management Application}{Academic project: Advanced databases}{December 2022 -- January 2022}{Nouakchott, Mauritania} \begin{itemize} \item Designed and built a survey management application to facilitate data collection and tracking. \item Backend development with the Django framework and front-end creation in HTML, CSS, and JavaScript. \item\href{https://github.com/MoustaphaCheikhJidou/survey-data-collection.git}{See the project here}. \end{itemize} \divider \cvevent{Survey on the Perception of Influencers}{Academic project: Sociological surveys}{January 2022 -- March 2022}{Nouakchott, Mauritania} \begin{itemize} \item Designed and conducted a survey on the perception of influencers in Mauritanian society. \item Developed the questionnaire on KoboCollect to ensure structured data collection. \item Independently collected and analyzed the data, interpreting results to identify social trends. \end{itemize} \divider \cvevent{Grade Management Application}{Academic project: Advanced databases and algorithms}{December 2022 -- January 2022}{Nouakchott, Mauritania} \begin{itemize} \item Designed and built a grade management application for students. \item Backend development with the Flask framework and use of HTML, CSS, and JavaScript for the front-end. \item\href{https://github.com/MoustaphaCheikhJidou/ISMSNotesApp.git}{See the project here}. \end{itemize} \divider \cvevent{Determinants of Academic Performance in Mauritania}{Academic project: Statistical software}{May 2021 -- June 2021}{Nouakchott, Mauritania} \begin{itemize} \item Analyzed the factors influencing academic performance in Mauritania using R. \item Studied data from CONFEMEN's education systems (PASEC1), including socio-demographic, geographic, and pedagogical variables. \end{itemize} \cvsection{Soft Skills}
+{\small Initiative \textbullet{} Curiosity \textbullet{} Interpersonal Ease \textbullet{} Creative \textbullet{} Listening Skills}
+
+\switchcolumn \cvsection{Education}
+\cvevent{Higher Polytechnic School of Nouakchott}{ESP - Mauritania}{October 2023 -- June 2026}{} Degree: State Engineer in Statistics and Data Engineering.
+
+\divider
+
+\cvevent{National School of Computer Science and Systems Analysis}{ENSIAS - Rabat}{October 2025 -- February 2026}{} Exchange semester: Computer Engineering and Networks.
+
+\divider
+
+\cvevent{Faculty of Economic Sciences and Management}{FSEG - Mauritania}{October 2023 -- June 2025}{} Degree: Master's in Applied Econometrics and Statistics -- Economic Statistical Engineering Track.
+\divider
+
+\cvevent{Polytechnic Group -- Higher Institute of Statistical Professions}{GP - Mauritania}{October 2020 -- June 2023}{} Degree: Professional Bachelor's in Applied Statistics.\\ \divider \cvevent{Atar High School}{Atar -- Mauritania}{2019 -- 2020}{} Degree: Baccalaureate, Mathematics track (Bac C).
+
+\cvsection{Skills}
+{\small
+\begin{itemize}
+\item \textbf{Analysis \& Modeling}: statistics, econometrics, surveys; data mining (classification, regression, clustering, association rules); time series (short-term forecasting).
+\item \textbf{Big Data, Data Engineering, DB \& GIS}: Architecture \& modeling of a centralized Data Warehouse, ELT/ETL pipelines (Airbyte, dbt), data flow orchestration (N8N), Hadoop, Spark, Kafka, MapReduce, Hive SQL; SQL management \& optimization (execution plans, indexing, partitioning, Oracle SQL Tuning); Docker \& Dev Containers; Stata, SPSS, Excel, GAMS, Eviews, Sphinx, KoboToolbox, ODKCollect, CSPro; Oracle SQL Developer; PostgreSQL/PostGIS (incl. pgvector); QGIS/ArcGIS; GIS integration \& analysis (spatial joins, basic geoprocessing).
+\item \textbf{AI, MLOps \& Programming}: supervised ML (regression, SVM, random forests, decision trees); deep learning (LSTM/GRU for time series, CNN, Transformers) with TensorFlow, PyTorch, Keras; NLP \& RAG (embeddings, language models, augmented retrieval, RAGAI API); MLOps (MLflow, Docker/Compose); Python/PySpark, Julia, R, Scala, SQL (incl. HiveQL), PL/SQL, Java (J2EE, \textbf{Spring Boot, Spring Cloud, Spring Data, Spring Security, Spring microservices}), VBA, \LaTeX; Bash \& Linux CLI; Git/GitHub; Jira, Trello, VS Code, Cursor; web development (HTML, CSS, JavaScript, Django, Flask, REST APIs, J2EE middleware integration), React, Flutter.
+\end{itemize}
+}
+
+\cvsection{Languages} \cvskill{Arabic}{4}{Native Language}\\ \divider \cvskill{French}{3}{DALF C1}\\ \divider \cvskill{English}{2} {CEFR B1 - Tracktest English Assessment}
+
+\cvsection{Volunteering} \begin{itemize} \item President, ISS Alumni Association (current position) \item Events \& Programs Officer, Association des Statisticiens Mauritaniens \item President, ESP Data Club (January 2023 -- April 2025) \item Event Coordinator, ESP Data Club (October 2022 -- January 2023) \item Member, Clubs Leaders Étudiants Francophones (CLEF) \item Member, Mauritanian Engineering Community (MEC) \item Military Training \end{itemize} \cvsection{Achievements} \cvachievement{\faTrophy}{1st Place, RIMAI Data Science Challenge 2024}{Competition focused on license plate recognition using AI techniques. Learn more about the challenge at the \href{https://www.rim-ai.com/challenge}{RIMAI Challenge Website}.}
+
+ \divider
+
+ \cvachievement{\faUsers}{Organizer, First Datathon in Mauritania}{Three-day competition centered on Mauritanian data analysis. As president of the ESP Data Club, I supervised the organization and judged competitors through competitive data science challenges.}
+
+ \cvsection{Certifications}
+{\small
+\textbf{freeCodeCamp (6):} \href{https://freecodecamp.org/certification/el_moustapha_cheikh_jidou/relational-database-v8}{Relational Database (v8)} (2025) \textbullet{} \href{https://freecodecamp.org/certification/EL_Moustapha_Cheikh_Jidou/data-visualization}{Data Visualization} (2023) \textbullet{} \href{https://freecodecamp.org/certification/EL_Moustapha_Cheikh_Jidou/data-analysis-with-python-v7}{Data Analysis with Python} (2022) \textbullet{} \href{https://freecodecamp.org/certification/EL_Moustapha_Cheikh_Jidou/scientific-computing-with-python-v7}{Scientific Computing with Python} (2022) \textbullet{} \href{https://freecodecamp.org/certification/EL_Moustapha_Cheikh_Jidou/front-end-development-libraries}{Front End Development Libraries} (2022) \textbullet{} \href{https://freecodecamp.org/certification/ELMoustapha_Cheikh_Jidou/responsive-web-design}{Responsive Web Design} (2022)\\[3pt]
+\textbf{DataCamp (9):} \href{https://www.datacamp.com/statement-of-accomplishment/course/0b455b5c403a108e847df406cae8ae46aa9623f6?raw=1}{Data Manipulation in SQL} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/dc4900c31a4d547e6e4f317fe9f64588c49fb71e?raw=1}{Intermediate SQL} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/b1207834324f0c856760624c2bb470b3afd6d642?raw=1}{Introduction to Data Science in Python} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/c6351222bc9ed2c5771273e520045c09e60d5b48?raw=1}{Python Data Science Toolbox (Part 2)} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/c129bc893ba40d2669b9682325ad8a4c3b6d8ecc?raw=1}{Understanding Data Engineering} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/6995ad305b5768d3d465ca0c38f3c26b8b25e3a4?raw=1}{Writing Efficient R Code} (2023) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/43feb083d3979dbbec34f54a6c8cf6458e15cd12}{Intermediate Python} (2022) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/929a5e8c2a4e42f4880ba65107b27e8f4b411fa3}{Intermediate R} (2022) \textbullet{} \href{https://www.datacamp.com/statement-of-accomplishment/course/a0d86c15550db6e4e8955c19e2c1f8037bda5497}{Introduction to Version Control with Git} (2022)\\[3pt]
+\textbf{Google (3):} \href{https://www.coursera.org/account/accomplishments/records/UCU4W3HV5KAR}{Google Advanced Data Analytics Capstone} (2023) \textbullet{} \href{https://www.coursera.org/account/accomplishments/specialization/F6NY5HAVFY2S}{Google Advanced Data Analytics Professional Certificate} (2023) \textbullet{} \href{https://www.coursera.org/account/accomplishments/specialization/certificate/JG3NPUJ7LZGL}{Google Data Analytics} (2023)
+}
+
+ \cvsection{Interests} \cvtag{Coding}\cvtag{Travel}\cvtag{Football}\cvtag{Tourism} \end{paracol}
+\end{document}
