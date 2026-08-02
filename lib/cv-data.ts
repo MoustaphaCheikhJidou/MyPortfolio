@@ -65,4 +65,14 @@ export const orientedCvVersions: CVVersion[] = [
     href: { en: "/cv/data-analyst-en.pdf", fr: "/cv/data-analyst-fr.pdf" },
     pages: 1,
   },
+  {
+    id: "enseignant",
+    title: { en: "Lecturer", fr: "Enseignant" },
+    description: {
+      en: "Focused on higher education teaching, academic supervision, and survey methodology.",
+      fr: "Orienté enseignement supérieur, encadrement académique et méthodologie d'enquête.",
+    },
+    href: { en: "/cv/enseignant-en.pdf", fr: "/cv/enseignant-fr.pdf" },
+    pages: 1,
+  },
 ];

@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{style} \geometry{left=1cm,right=1cm,top=0.2cm,bottom=0.2cm,columnsep=1.2cm} \usepackage{paracol} \usepackage{xcolor} \definecolor{MainGreen}{HTML}{1f2c67} \definecolor{SlateGrey}{HTML}{2E2E2E} \definecolor{LightGrey}{HTML}{666666}  \colorlet{heading}{MainGreen} \colorlet{headingrule}{MainGreen} \colorlet{accent}{MainGreen} \colorlet{emphasis}{SlateGrey} \colorlet{body}{LightGrey} \renewcommand{\cvItemMarker}{{\small\textbullet}} \renewcommand{\cvRatingMarker}{\faCircle} \renewcommand{\cvsectionfont}{\large\bfseries} \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}  \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+% --- Personnalisations de mise en forme propres à ce document (n'affectent
+% pas style.cls ni les autres CV) : ligne décorative fine sous les titres de
+% section, dates en italique, espacements resserrés pour un rendu compact et
+% professionnel, calibrés pour remplir une page A4 en une seule colonne.
+\renewcommand{\cvsection}[2][]{%
+  \par\vspace{1pt}%
+  \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
+  {\color{heading}\cvsectionfont \MakeUppercase{#2}}\par%
+  \vspace{0.3pt}
+  {\color{headingrule}\hdashrule{\linewidth}{0.5pt}{2pt}\par}\vspace{0.3pt}
+}
+\renewcommand{\cvevent}[4]{%
+  \normalsize\par\noindent
+  {\bfseries\color{emphasis}#1\ifstrequal{#2}{}{}{ -- #2}}%
+  \ifstrequal{#3}{}{}{%
+    \hfill{\color{accent}\bfseries\itshape\cvDateMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\datename: }}#3\EndAccSupp{}}%
+  }\par
+  \ifstrequal{#4}{}{}{%
+    {\small\itshape\color{body}\cvLocationMarker~%
+      \BeginAccSupp{method=pdfstringdef,ActualText={\locationname: }}#4\EndAccSupp{}\par}}%
+  \vspace{0.5pt}%
+  \footnotesize
+}
+\renewcommand{\divider}{\par\noindent\textcolor{body!30}{\hdashrule{\linewidth}{0.5pt}{0.4ex}}\vspace{0.5pt}}
+\setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0pt,after=\vspace{0pt}}
+\begin{document} \name{El Moustpha Cheikh JIDDOU} \tagline{\textcolor{MainGreen}{Enseignant en Statistique \& Méthodes d'Enquête -- Transmission des savoirs, encadrement académique et mentorat}} \personalinfo{ \email{elmoustapha.cheikh.jiddou@gmail.com} \phone{+22248647376} \location{Nouakchott, Mauritanie} \printinfo{\faLinkedin}{El Moustpha Cheikh Jiddou}[https://www.linkedin.com/in/el-moustapha-cheikh-jidou/] \printinfo{\faGithub}{MoustaphaCheikhJidou}[https://github.com/MoustaphaCheikhJidou] \printinfo{\faGlobe}{Portfolio}[https://moustaphacheikhjidou.github.io/MyPortfolio/] } \makecvheader \columnratio{0.6} \begin{paracol}{2}
+
+\cvsection{Expériences Professionnelles}
+\cvevent{Enseignant vacataire -- Pauvreté \& Conditions de Vie des Ménages + Enquête Sociologique}{Institut Supérieur des Métiers de la Statistique (ISS)}{Février 2026 -- Juin 2026}{Nouakchott, Mauritanie}
+\begin{itemize}
+  \item Reconduction pour une deuxième année avec un module supplémentaire.
+  \item Enseignement du module Pauvreté et Conditions de Vie des Ménages (édition améliorée).
+  \item Conception et enseignement d'un nouveau module : Enquête Sociologique (méthodologie d'enquête, échantillonnage, conception de questionnaires, analyse des données).
+  \item Encadrement des TD et TP avec simulation d'enquêtes terrain et utilisation de KoboToolbox, CSPro et Stata.
+  \item Direction et évaluation des PFE et encadrement des stages ouvriers.
+  \item Développement des supports de cours, études de cas et grilles d'évaluation.
+\end{itemize}
+\divider
+\cvevent{Stage de fin d'études -- Analyse macroéconomique et modélisation DSGE}{Banque Centrale de Mauritanie (BCM)}{Février 2026 -- Mai 2026}{Nouakchott, Mauritanie}
+\begin{itemize}
+  \item Réalisation d'un mémoire de master en Économétrie et Statistique Appliquée comparant les régimes monétaires en Mauritanie à l'aide d'un modèle DSGE de petite économie ouverte.
+  \item Participation aux activités de la Direction Générale des Études et de la Stabilité Monétaire : analyse conjoncturelle, prévisions macroéconomiques et statistiques monétaires.
+\end{itemize}
+\divider
+\cvevent{Stage Ouvrier}{Agence Nationale de la Statistique et de l'Analyse Démographique et Économique (ANSADE)}{Avril -- Juin 2022}{Nouakchott, Mauritanie}
+\begin{itemize}
+  \item Élaboration d'une méthodologie pour la cartographie de données en vue de la conception des comptes sectoriels et analyse sous ERETES.
+\end{itemize}
+
+\cvsection{Projets}
+\cvevent{Poverty \& Inequality Forecasting in Mauritania}{Prévisions d'indicateurs de pauvreté}{}{}
+\begin{itemize}
+  \item Prévisions de quatre indicateurs clés de pauvreté de 1996 à 2030 à partir de données d'enquête et de techniques d'interpolation. \href{https://github.com/MoustaphaCheikhJidou/Poverty-Gini-Forecast-Mauritania}{GitHub}.
+\end{itemize}
+\divider
+\cvevent{Survey on the Perception of Influencers}{Conception d'enquête sociologique}{}{}
+\begin{itemize}
+  \item Conception et réalisation d'une enquête sur la perception des influenceurs dans la société mauritanienne, avec questionnaire structuré sur KoboCollect.
+\end{itemize}
+\divider
+\cvevent{Bridging the Future Baseline Data Challenge}{Modélisation prédictive -- initiative financée par l'USDA}{}{}
+\begin{itemize}
+  \item Analyse de données et modélisation prédictive pour améliorer les compétences en lecture des élèves du primaire en Mauritanie (Tagant, Gorgol, Brakna). \href{https://github.com/MoustaphaCheikhJidou/Bridging-the-Future-Baseline-Data-Challenge}{GitHub}.
+\end{itemize}
+
+\switchcolumn \cvsection{Formation}
+\cvevent{École Supérieure Polytechnique de Nouakchott}{ESP - Mauritanie}{Octobre 2023 -- Juin 2026}{} Ingénieur d'État en Statistique et en Ingénierie des Données.
+\divider
+\cvevent{Faculté des Sciences Économiques et de Gestion}{FSEG - Mauritanie}{Octobre 2023 -- Juin 2025}{} Master en Économétrie et Statistiques Appliquées.
+\divider
+\cvevent{Institut Supérieur des Métiers de la Statistique}{ISS - Mauritanie}{Octobre 2020 -- Juin 2023}{} Licence Professionnelle en Statistique Appliquée.
+
+\cvsection{Compétences}
+{\footnotesize Pédagogie universitaire \textbullet{} Conception de cours \textbullet{} Encadrement PFE/stages \textbullet{} Méthodologie d'enquête \textbullet{} Échantillonnage \textbullet{} Évaluation des étudiants \textbullet{} KoboToolbox \textbullet{} CSPro \textbullet{} Stata \textbullet{} SPSS \textbullet{} R \textbullet{} Analyse de données d'enquête}
+
+\cvsection{Langues} \cvskill{Arabe}{4}{Langue natale}\\ \divider \cvskill{Français}{3}{DALF C1}\\ \divider \cvskill{Anglais}{2}{CEFR B1}
+
+\cvsection{Vie Associative}
+{\footnotesize Président de l'ESP Data Club \textbullet{} Président de l'Alumni de l'ISS}
+
+\cvsection{Certifications}
+{\footnotesize \textbf{Google} Data Analytics \textbullet{} \textbf{DataCamp} R Code}
+
+\end{paracol}
+\end{document}

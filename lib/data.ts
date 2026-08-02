@@ -284,6 +284,7 @@ export const education: EducationEntry[] = [
 ];
 
 export type ExperienceRole = {
+  id?: string;
   title: LocalizedString;
   period: string;
   location: string;
@@ -333,6 +334,78 @@ export const experience: ExperienceGroup[] = [
           {
             en: "Environment: Python (FastAPI), Data Warehousing, ELT pipelines, Docker, N8N, PostgreSQL (pgvector), PyTorch, React, REST APIs, Linux/Bash.",
             fr: "Environnement technique : Python (FastAPI), Data Warehousing, pipelines ELT, Docker, N8N, PostgreSQL (pgvector), PyTorch, React, API REST, Linux/Bash.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    org: "Institut Supérieur des Métiers de la Statistique (ISS)",
+    logo: "/images/logos/gp.png",
+    roles: [
+      {
+        id: "iss-teaching-year2",
+        title: {
+          en: "Lecturer — Poverty & Household Living Conditions + Sociological Survey Methods",
+          fr: "Enseignant vacataire — Pauvreté & Conditions de Vie des Ménages + Enquête Sociologique",
+        },
+        period: "Feb 2026 – Jun 2026",
+        location: "Nouakchott",
+        bullets: [
+          {
+            en: "Renewed for a second consecutive year with an additional course module.",
+            fr: "Reconduction pour une deuxième année avec un module supplémentaire.",
+          },
+          {
+            en: "Taught Poverty and Household Living Conditions module (improved edition).",
+            fr: "Enseignement du module Pauvreté et Conditions de Vie des Ménages (édition améliorée).",
+          },
+          {
+            en: "Designed and delivered a new module: Sociological Survey Methods (survey methodology, sampling, questionnaire design, data analysis).",
+            fr: "Conception et enseignement d'un nouveau module : Enquête Sociologique (méthodologie d'enquête, échantillonnage, conception de questionnaires, analyse des données).",
+          },
+          {
+            en: "Supervised tutorials and practical sessions with field survey simulations using KoboToolbox, CSPro, and Stata.",
+            fr: "Encadrement des TD et TP avec simulation d'enquêtes terrain et utilisation de KoboToolbox, CSPro et Stata.",
+          },
+          {
+            en: "Directed and evaluated final-year projects (PFE) and supervised worker internships.",
+            fr: "Direction et évaluation des PFE et encadrement des stages ouvriers.",
+          },
+          {
+            en: "Developed course materials, case studies, and evaluation frameworks for both modules.",
+            fr: "Développement des supports de cours, études de cas et grilles d'évaluation.",
+          },
+        ],
+      },
+      {
+        id: "iss-teaching-year1",
+        title: {
+          en: "Lecturer — Poverty and Household Living Conditions",
+          fr: "Enseignant vacataire — Pauvreté et Conditions de Vie des Ménages",
+        },
+        period: "Feb 2025 – Jun 2025",
+        location: "Nouakchott",
+        bullets: [
+          {
+            en: "First higher education teaching experience at the institution from which I graduated.",
+            fr: "Première expérience d'enseignement supérieur au sein de l'établissement dont je suis diplômé.",
+          },
+          {
+            en: "Prepared and delivered lectures on poverty measurement methodologies and household living conditions analysis.",
+            fr: "Préparation et animation des cours magistraux sur les méthodologies de mesure de la pauvreté et l'analyse des conditions de vie des ménages.",
+          },
+          {
+            en: "Designed and supervised tutorials (TD) and practical sessions (TP), using real case studies from national household surveys.",
+            fr: "Conception et encadrement des travaux dirigés (TD) et travaux pratiques (TP), avec études de cas réels issus d'enquêtes ménages nationales.",
+          },
+          {
+            en: "Provided personalized academic support and continuous student monitoring throughout the semester.",
+            fr: "Accompagnement pédagogique personnalisé et suivi continu des étudiants tout au long du semestre.",
+          },
+          {
+            en: "Supervised final-year projects (PFE) and worker internships, with mentoring on methodological and technical aspects.",
+            fr: "Encadrement des projets de fin d'études (PFE) et des stages ouvriers, avec mentorat sur les aspects méthodologiques et techniques.",
           },
         ],
       },
