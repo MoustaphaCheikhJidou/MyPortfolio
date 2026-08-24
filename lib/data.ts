@@ -299,6 +299,36 @@ export type ExperienceGroup = {
 
 export const experience: ExperienceGroup[] = [
   {
+    org: "Richat Partners",
+    logo: "/images/logos/richat-partners.png",
+    roles: [
+      {
+        id: "richat-partners-data-ai-engineer",
+        title: { en: "Data & AI Engineer", fr: "Ingénieur Data & IA" },
+        period: "Aug 2026 – Present",
+        location: "Nouakchott",
+        bullets: [
+          {
+            en: "Design and implementation of AI and data solutions for strategic consulting missions.",
+            fr: "Conception et implémentation de solutions IA et data pour les missions de conseil stratégique.",
+          },
+          {
+            en: "Development of data pipelines and machine learning models to support decision-making in digital transformation, investment, and strategy projects.",
+            fr: "Développement de pipelines de données et de modèles machine learning pour appuyer la prise de décision dans les projets de transformation digitale, d'investissement et de stratégie.",
+          },
+          {
+            en: "Collaboration with multidisciplinary teams to translate business needs into technical solutions.",
+            fr: "Collaboration avec des équipes pluridisciplinaires pour traduire les besoins métiers en solutions techniques.",
+          },
+          {
+            en: "Contribution to the firm's AI offerings: LLM integration, RAG systems, predictive analytics, and data-driven advisory.",
+            fr: "Contribution aux offres IA du cabinet : intégration de LLM, systèmes RAG, analyse prédictive et conseil data-driven.",
+          },
+        ],
+      },
+    ],
+  },
+  {
     org: "Banque Nationale de Mauritanie (BNM)",
     logo: "/images/logos/bnm.png",
     roles: [
