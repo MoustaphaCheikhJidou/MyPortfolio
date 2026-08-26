@@ -334,7 +334,7 @@ export const experience: ExperienceGroup[] = [
     roles: [
       {
         title: { en: "Data Systems & IT Architecture Intern", fr: "Stagiaire Architecte Systèmes de Données & IT" },
-        period: "Feb 2025 – Present",
+        period: "Feb 2025 – Jul 2026",
         location: "Nouakchott",
         bullets: [
           {
